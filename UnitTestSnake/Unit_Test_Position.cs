@@ -1,12 +1,15 @@
-using Xunit;
+﻿using Xunit;
 using Snake;
+using static Snake.Player;
 
 // Testing Klasses and Units in the snake program. 
 
 namespace UnitTestSnake
 {
-    public class UnitTest1
+  
+    public class Unit_Test_Position
     {
+    
         [Fact]
         public void Position_X_Y_Test()
         {

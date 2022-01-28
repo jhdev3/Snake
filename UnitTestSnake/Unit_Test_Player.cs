@@ -1,13 +1,11 @@
-﻿using Xunit;
+using Xunit;
 using Snake;
-using static Snake.Player;
 
 // Testing Klasses and Units in the snake program. 
 
 namespace UnitTestSnake
 {
-  
-    public class Unit_test_Player
+    public class UnitTest1
     {
         [Fact]
         public void Player_Move_Up()
@@ -19,7 +17,7 @@ namespace UnitTestSnake
             p.Update();
             //assert
             Assert.NotNull(p);
-            Assert.Equal(10, p.position.x);
+            Assert.Equal(9, p.position.x);
             Assert.Equal('X', p.Appearance);
         }
     }
