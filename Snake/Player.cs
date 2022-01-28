@@ -8,7 +8,7 @@ namespace Snake
 {   
     //NotMoving Enum Global Variable, Own class ?,. 
 
-    public class Player : GameObject
+    internal class Player : GameObject
     {
         public enum Direction { Up, Down, Left, Right, NotMoving }
 
@@ -41,8 +41,7 @@ namespace Snake
                 default:
                     position.x += 0;
                     position.y += 0;
-                    break;
-                  
+                    break;                 
             }
         }
     }

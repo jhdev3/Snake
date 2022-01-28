@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    public class Posistion
+    internal class Posistion
     {//TEST
         public int x, y;
     }

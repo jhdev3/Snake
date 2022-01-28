@@ -1,6 +1,6 @@
 ﻿namespace Snake
 {
-    public abstract class GameObject
+    internal abstract class GameObject
     {
         // TODO
         public Posistion position = new Posistion();
