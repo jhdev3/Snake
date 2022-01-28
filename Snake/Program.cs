@@ -52,6 +52,7 @@ class Program
     static void Main(string[] args)
     {
         
+        
         // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
         Loop();
     }
