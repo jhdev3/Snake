@@ -4,7 +4,7 @@ public class MaguiTestar
 {
 	public Class1()
 	{
-		//HEJ!
+		//HEJ! Void tesat
 	}
 }
 //Testar igen 
