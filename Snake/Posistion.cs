@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Snake
 {
     public class Posistion
-    {
+    {//TEST
         public int x, y;
     }
 }
