@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 namespace Snake
 {   
     //NotMoving Enum Global Variable, Own class ?,. 
-    public enum Direction { Up, Down, Left, Right, NotMoving };
 
-    internal class Player : GameObject
+    public class Player : GameObject
     {
-        public Direction playerMove = Direction.NotMoving; 
+        public enum Direction { Up, Down, Left, Right, NotMoving }
+
+        public Direction playerMove;
         //Needs a Start postion
         public Player (Posistion start)
         {
+            this.playerMove = Direction.NotMoving;
             position = start;
             Appearance = 'X';
-            playerMove = Direction.NotMoving;
+            Console.WriteLine("TEst klasa" + " " + playerMove);
         }
 
         public override void Update()
