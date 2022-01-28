@@ -5,11 +5,9 @@ using static Snake.Player;
 // Testing Klasses and Units in the snake program. 
 
 namespace UnitTestSnake
-{
-  
+{ 
     public class Unit_Test_Position
     {
-    
         [Fact]
         public void Position_X_Y_Test()
         {
