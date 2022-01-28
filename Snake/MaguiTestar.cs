@@ -2,7 +2,7 @@
 
 public class MaguiTestar
 {
-	public Class1()
+	public void Class1()
 	{
 		//HEJ! Void tesat
 	}
