@@ -20,7 +20,7 @@ namespace Snake
 
             this.playerDirection = Direction.NotMoving;
             position = start;
-            Appearance = 'S';
+            Appearance = '☻';
         }
 
         public override void Update()
