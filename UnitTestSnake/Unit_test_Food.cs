@@ -7,12 +7,12 @@ namespace UnitTestSnake
 {
     public class Unit_test_Food
     {
-        Posistion placeFood = new Posistion { x= 5, y= 10 };    
+        Position placeFood = new Position { x= 5, y= 10 };    
         [Fact]
         public void Position_X_Y_Test()
         {
             //arrange
-            Posistion f = placeFood;
+            Position f = placeFood;
             //act - Creating the Food Object
             
             //assert

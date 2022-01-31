@@ -12,7 +12,7 @@ namespace UnitTestSnake
         public void Position_X_Y_Test()
         {
             //arrange
-            Posistion xy = new Posistion { x = 5, y=10 };
+            Position xy = new Position { x = 5, y=10 };
             //act
             xy.x = 4;
             //assert

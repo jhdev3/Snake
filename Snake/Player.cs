@@ -14,7 +14,7 @@ namespace Snake
 
         public Direction playerMove;
         //Needs a Start postion
-        public Player (Posistion start)
+        public Player (Position start)
         {
             this.playerMove = Direction.NotMoving;
             position = start;

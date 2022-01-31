@@ -3,7 +3,7 @@
     internal abstract class GameObject
     {
         // TODO
-        public Posistion position = new Posistion();
+        public Position position = new Position();
         public char Appearance;
 
         public abstract void Update();

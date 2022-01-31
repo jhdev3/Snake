@@ -11,7 +11,7 @@ namespace UnitTestSnake
         public void Player_Move_Up_x_9()
         {
             //arrange
-            Player p = new Player(new Posistion { x = 10, y = 10 });
+            Player p = new Player(new Position { x = 10, y = 10 });
             // act
             p.playerMove = Player.Direction.Up;
             p.Update();
@@ -24,7 +24,7 @@ namespace UnitTestSnake
         public void Player_Move_Down_x_11()
         {
             //arrange
-            Player p = new Player(new Posistion { x = 10, y = 10 });
+            Player p = new Player(new Position { x = 10, y = 10 });
             // act
             p.playerMove = Player.Direction.Down;
             p.Update();
@@ -35,7 +35,7 @@ namespace UnitTestSnake
         public void Player_Move_Right_y_11()
         {
             //arrange
-            Player p = new Player(new Posistion { x = 10, y = 10 });
+            Player p = new Player(new Position { x = 10, y = 10 });
             // act
             p.playerMove = Player.Direction.Right;
             p.Update();
@@ -46,7 +46,7 @@ namespace UnitTestSnake
         public void Player_Move_Right_y_9()
         {
             //arrange
-            Player p = new Player(new Posistion { x = 10, y = 10 });
+            Player p = new Player(new Position { x = 10, y = 10 });
             // act
             p.playerMove = Player.Direction.Left;
             p.Update();
