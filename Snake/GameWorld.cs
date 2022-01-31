@@ -33,8 +33,7 @@
 
                             if (fobj.position.IsEqual(obj.position))
                             {
-                                Console.Write(fobj.position);
-                                Console.Write(obj.position);
+                               
 
 
                                 points++;
