@@ -9,5 +9,20 @@ namespace Snake
     internal class Position
     {//TEST
         public int x, y;
+
+        public bool IsEqual(Position compare)
+        {
+            if(x == compare.x && y == compare.y)
+            {
+                return true;
+            } 
+            else
+                return false;
+        }
+        public override string ToString()
+        {
+            return "X: " + x + " " + "Y: " + y;
+        }
+
     }
 }

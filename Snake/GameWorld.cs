@@ -17,10 +17,35 @@
 
         public void Update()
         {
+            Console.WriteLine();
+
             //Player_Out_Of_Field();
             // TODO
             foreach (GameObject obj in gameObjects)
             {
+                if(obj is Player)
+                {
+
+                    foreach (GameObject fobj in gameObjects)
+                    {
+                        if(fobj is Food)
+                        {
+
+                            if (fobj.position.IsEqual(obj.position))
+                            {
+                                Console.Write(fobj.position);
+                                Console.Write(obj.position);
+
+
+                                points++;
+                                var Random = new Random();
+                                Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20) };
+                                fobj.position = foodPlacement; 
+
+                            }
+                        }
+                    }
+                }
                 obj.Update();
             }
         }
