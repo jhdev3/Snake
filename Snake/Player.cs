@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Snake
 {   
-    //NotMoving Enum Global Variable, Own class ?,. 
 
     internal class Player : GameObject
     {
@@ -17,6 +16,13 @@ namespace Snake
         public Player ()
         {
             Position start = new Position { x = 3, y = 3};
+
+            this.playerDirection = Direction.NotMoving;
+            position = start;
+            Appearance = '☻';
+        }
+        public Player(Position start)
+        {
 
             this.playerDirection = Direction.NotMoving;
             position = start;

@@ -6,11 +6,43 @@ class Program
     /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
     /// </summary>
     static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
+    
+    static int _WorldWidth = 50;
+    static int _WorldHeight = 20;
+
+    static Position Player_Inside_the_World(Position pos)
+    {
+        //Height
+        if (pos.y >= _WorldHeight)
+        {
+            pos.y = 0;
+        }
+
+        else if (pos.y < 0)
+        {
+            pos.y = _WorldHeight-1;
+        }
+        //Width
+        else if (pos.x >= _WorldWidth)
+        {
+            pos.x = 0;
+        }
+
+        else if (pos.x < 0)
+        {
+            pos.x = _WorldWidth-1;
+        }
+
+        return pos;
+
+    }
+
+
     static void Loop()
     {
         // Initialisera spelet
         const int frameRate = 5;
-        GameWorld world = new GameWorld(50,20);
+        GameWorld world = new GameWorld(_WorldWidth, _WorldHeight);
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
 
@@ -55,6 +87,10 @@ class Program
                     worm.playerDirection = Player.Direction.Right;
 
                     break;
+                case ConsoleKey.P:
+                    worm.playerDirection = Player.Direction.NotMoving;
+
+                    break;
 
                     // TODO Lägg till logik för andra knapptryckningar
                     // ...
@@ -63,6 +99,10 @@ class Program
             // Uppdatera världen och rendera om
             renderer.Render_Blank();
             world.Update();
+
+            //Player going to Hell ?
+            worm.position = Player_Inside_the_World(worm.position);
+
             renderer.Render();
 
             // Mät hur lång tid det tog

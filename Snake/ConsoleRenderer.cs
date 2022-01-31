@@ -23,7 +23,6 @@
 
             // Använd
 
-            Player_Out_Of_Field();
             foreach( GameObject obj in world.gameObjects)
             {
                 Console.SetCursorPosition(obj.position.x, obj.position.y);
@@ -37,32 +36,6 @@
                 Console.SetCursorPosition(obj.position.x, obj.position.y);
                 Console.Write(" ");
             }
-        }
-        private void Player_Out_Of_Field()
-        {
-
-            //Height
-            if (world.gameObjects[0].position.y > world.Height-1)
-            {
-                world.gameObjects[0].position.y = 0;
-            }
-
-            else if (world.gameObjects[0].position.y < 0)
-            {
-                world.gameObjects[0].position.y = world.Height-1;
-            }
-            //Width
-            else if (world.gameObjects[0].position.x > world.Width-1)
-            {
-                world.gameObjects[0].position.x = 0;
-            }
-
-            else if (world.gameObjects[0].position.x < 0)
-            {
-                world.gameObjects[0].position.x = world.Width-1;
-            }
-
-            //  Console.WriteLine(gameObjects[0].position.x);
         }
     }
 }
