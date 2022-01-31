@@ -19,7 +19,6 @@ namespace Snake
             this.playerMove = Direction.NotMoving;
             position = start;
             Appearance = 'X';
-            Console.WriteLine("TEst klasa" + " " + playerMove);
         }
 
         public override void Update()

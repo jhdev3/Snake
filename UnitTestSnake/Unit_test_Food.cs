@@ -12,14 +12,16 @@ namespace UnitTestSnake
         public void Position_X_Y_Test()
         {
             //arrange
-            Position f = placeFood;
+            Food f = new Food(placeFood);
             //act - Creating the Food Object
             
-            //assert
+            //act
             Assert.NotNull(f);
            // Assert.Equal("F", f.Appearance);
-            Assert.Equal(5, f.x);
-            Assert.Equal(10, f.y);
+            Assert.Equal(5, f.position.x);
+            Assert.Equal('@', f.Appearance);
+
+            Assert.Equal(10, f.position.y);
 
         }
     }
