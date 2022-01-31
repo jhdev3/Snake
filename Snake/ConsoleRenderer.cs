@@ -16,7 +16,6 @@
 
         public void Render()
         {
-            Console.Clear();
 
             // TODO Rendera spelvärlden (och poängräkningen)
             Console.SetCursorPosition(0, world.Height);
@@ -29,6 +28,14 @@
             {
                 Console.SetCursorPosition(obj.position.x, obj.position.y);
                 Console.Write(obj.Appearance);
+            }
+        }
+        public void Render_Blank()
+        {
+            foreach (GameObject obj in world.gameObjects)
+            {
+                Console.SetCursorPosition(obj.position.x, obj.position.y);
+                Console.Write(" ");
             }
         }
         private void Player_Out_Of_Field()

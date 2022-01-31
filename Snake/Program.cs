@@ -61,6 +61,7 @@ class Program
             }
 
             // Uppdatera världen och rendera om
+            renderer.Render_Blank();
             world.Update();
             renderer.Render();
 
