@@ -10,14 +10,14 @@ class Program
     {
         // Initialisera spelet
         const int frameRate = 5;
-        GameWorld world = new GameWorld();
+        GameWorld world = new GameWorld(50,20);
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
-        Position test = new Position();
-
-        new Food(test);
 
         // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
+        Player worm = new Player();
+        world.gameObjects.Add(worm);
+
         // ...
 
         // Huvudloopen
@@ -33,6 +33,22 @@ class Program
             {
                 case ConsoleKey.Q:
                     running = false;
+                    break;
+                case ConsoleKey.UpArrow:
+                    worm.playerDirection = Player.Direction.Up;
+
+                    break;
+                case ConsoleKey.DownArrow:
+                    worm.playerDirection = Player.Direction.Down;
+
+                    break;
+                case ConsoleKey.LeftArrow:
+                    worm.playerDirection = Player.Direction.Left;
+
+                    break;
+                case ConsoleKey.RightArrow:
+                    worm.playerDirection = Player.Direction.Right;
+
                     break;
 
                     // TODO Lägg till logik för andra knapptryckningar

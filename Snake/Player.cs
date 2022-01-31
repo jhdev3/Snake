@@ -12,30 +12,32 @@ namespace Snake
     {
         public enum Direction { Up, Down, Left, Right, NotMoving }
 
-        public Direction playerMove;
+        public Direction playerDirection;
         //Needs a Start postion
-        public Player (Position start)
+        public Player ()
         {
-            this.playerMove = Direction.NotMoving;
+            Position start = new Position { x = 3, y = 3};
+
+            this.playerDirection = Direction.NotMoving;
             position = start;
-            Appearance = 'X';
+            Appearance = 'S';
         }
 
         public override void Update()
         {
-            switch (this.playerMove)
+            switch (this.playerDirection)
             {
                 case Direction.Up:
-                    position.x -= 1;
-                    break;
-                case Direction.Down:
-                    position.x += 1;
-                    break;
-                case Direction.Left:
                     position.y -= 1;
                     break;
-                case Direction.Right:
+                case Direction.Down:
                     position.y += 1;
+                    break;
+                case Direction.Left:
+                    position.x -= 1;
+                    break;
+                case Direction.Right:
+                    position.x += 1;
                     break;
                 default:
                     position.x += 0;
