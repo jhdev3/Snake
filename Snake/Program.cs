@@ -11,7 +11,13 @@ class Program
     public const int WorldHeight = 20;
     //public static readonly int WorldHeight = 20;
 
-
+    static void ClearBuffer()
+    {
+        while (Console.KeyAvailable)
+        {
+            Console.ReadKey(false);
+        }
+    }
 
     static void Loop()
     {
@@ -31,8 +37,6 @@ class Program
         world.gameObjects.Add(food);
 
         world.gameObjects.Add(new Food(new Position { x = 5, y = 6}));
-
-
 
 
         // ...
@@ -83,6 +87,8 @@ class Program
             //Create new positons/frames
             world.Update();
             renderer.Render();
+
+            ClearBuffer();
 
             // Mät hur lång tid det tog
             double frameTime = Math.Ceiling(1000.0 / frameRate - (DateTime.Now - before).TotalMilliseconds);
