@@ -18,7 +18,6 @@
         public void Update()
         {
 
-            //Player_Out_Of_Field();
             // TODO
             foreach (GameObject obj in gameObjects.ToList())
             {
