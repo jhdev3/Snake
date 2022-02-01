@@ -6,11 +6,18 @@ class Program
     /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
     /// </summary>
     static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
+    
+    static int _WorldWidth = 50;
+    static int _WorldHeight = 20;
+
+   
+
+
     static void Loop()
     {
         // Initialisera spelet
         const int frameRate = 5;
-        GameWorld world = new GameWorld(50,20);
+        GameWorld world = new GameWorld(_WorldWidth, _WorldHeight);
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
 
@@ -22,6 +29,11 @@ class Program
         Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
         Food food = new Food(foodPlacement);
         world.gameObjects.Add(food);
+
+        world.gameObjects.Add(new Food(new Position { x = 5, y = 6}));
+
+
+
 
         // ...
 
@@ -55,13 +67,20 @@ class Program
                     worm.playerDirection = Player.Direction.Right;
 
                     break;
+                case ConsoleKey.P:
+                    worm.playerDirection = Player.Direction.NotMoving;
+
+                    break;
 
                     // TODO Lägg till logik för andra knapptryckningar
                     // ...
             }
 
             // Uppdatera världen och rendera om
-            renderer.Render_Blank();
+
+            renderer.Render_Blank();//Remove old frame/positions
+
+            //Create new positons/frames
             world.Update();
             renderer.Render();
 
@@ -74,6 +93,8 @@ class Program
             }
         }
     }
+    //Creating some Gravity for the little worm :) 
+   
 
     static void Main(string[] args)
     {
