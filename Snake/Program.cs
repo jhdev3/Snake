@@ -10,32 +10,7 @@ class Program
     static int _WorldWidth = 50;
     static int _WorldHeight = 20;
 
-    static Position Player_Inside_the_World(Position pos)
-    {
-        //Height
-        if (pos.y >= _WorldHeight)
-        {
-            pos.y = 0;
-        }
-
-        else if (pos.y < 0)
-        {
-            pos.y = _WorldHeight-1;
-        }
-        //Width
-        else if (pos.x >= _WorldWidth)
-        {
-            pos.x = 0;
-        }
-
-        else if (pos.x < 0)
-        {
-            pos.x = _WorldWidth-1;
-        }
-
-        return pos;
-
-    }
+   
 
 
     static void Loop()
@@ -54,6 +29,11 @@ class Program
         Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
         Food food = new Food(foodPlacement);
         world.gameObjects.Add(food);
+
+        world.gameObjects.Add(new Food(new Position { x = 5, y = 6}));
+
+
+
 
         // ...
 
@@ -97,12 +77,11 @@ class Program
             }
 
             // Uppdatera världen och rendera om
-            renderer.Render_Blank();
+
+            renderer.Render_Blank();//Remove old frame/positions
+
+            //Create new positons/frames
             world.Update();
-
-            //Player going to Hell ?
-            worm.position = Player_Inside_the_World(worm.position);
-
             renderer.Render();
 
             // Mät hur lång tid det tog
@@ -114,6 +93,8 @@ class Program
             }
         }
     }
+    //Creating some Gravity for the little worm :) 
+   
 
     static void Main(string[] args)
     {

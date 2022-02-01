@@ -26,6 +26,9 @@
 
                 if (obj is Player)
                 {
+                    //Player going to Hell ?
+                    obj.position = Player_Inside_the_World(obj.position);
+
                     foreach (GameObject fobj in gameObjects)
                     {
                         if(fobj is Food)
@@ -45,7 +48,34 @@
                 }
             }
         }
-       
+        //Adding som Gravity to the player :)
+        private Position Player_Inside_the_World(Position pos)
+        {
+            //Height
+            if (pos.y >= Height)
+            {
+                pos.y = 0;
+            }
+
+            else if (pos.y < 0)
+            {
+                pos.y = Height-1;
+            }
+            //Width
+            else if (pos.x >= Width)
+            {
+                pos.x = 0;
+            }
+
+            else if (pos.x < 0)
+            {
+                pos.x = Width-1;
+            }
+
+            return pos;
+
+        }
+
     }
 }
        
