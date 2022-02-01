@@ -6,18 +6,18 @@ class Program
     /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
     /// </summary>
     static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
-    
-    static int _WorldWidth = 50;
-    static int _WorldHeight = 20;
 
-   
+    public const int WorldWidth = 50;
+    public const int WorldHeight = 20;
+    //public static readonly int WorldHeight = 20;
+
 
 
     static void Loop()
     {
         // Initialisera spelet
         const int frameRate = 5;
-        GameWorld world = new GameWorld(_WorldWidth, _WorldHeight);
+        GameWorld world = new GameWorld(WorldWidth, WorldHeight);
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
 
