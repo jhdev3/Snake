@@ -25,10 +25,7 @@ class Program
         Player worm = new Player();
         world.gameObjects.Add(worm);
 
-        var Random = new Random();
-        Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
-        Food food = new Food(foodPlacement);
-        world.gameObjects.Add(food);
+        world.Create_Food();
         AISnake aISnake = new AISnake(world, new Position { x= 5, y = 5 });   
         world.gameObjects.Add(aISnake); 
 

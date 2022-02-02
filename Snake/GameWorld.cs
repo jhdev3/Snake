@@ -22,7 +22,7 @@
             // TODO
             foreach (GameObject obj in gameObjects.ToList())
             {
-                obj.Update();//Player should move first :)
+                obj.Update();
 
                 if (obj is Player)
                 {
@@ -42,9 +42,7 @@
                                     Points++;
 
                                 gameObjects.Remove(fobj);
-                                var Random = new Random();
-                                Position foodPlacement = new Position { x = Random.Next(50), y = Random.Next(20) };
-                                gameObjects.Add(new Food(foodPlacement));
+                                Create_Food();
                                 break;
                             }
                         }
@@ -85,6 +83,15 @@
 
         }
 
+        /// <summary>
+        /// Creates Food at random posistion
+        /// </summary>
+        public void Create_Food()
+        {
+            var Random = new Random();
+            Position foodPosistion = new Position { x = Random.Next(this.Width), y = Random.Next(this.Height)};
+            gameObjects.Add(new Food(foodPosistion));
+        }
     }
 }
        
