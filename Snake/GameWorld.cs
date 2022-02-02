@@ -24,7 +24,6 @@
             bool gameOver = false;
             foreach (GameObject obj in gameObjects.ToList())
             {
-                obj.Update();//Player should move first :)
 
                 if (obj is Player)
                 {
@@ -32,7 +31,8 @@
                     for (int i = playerPositions.Count - 1; i > points; i--)
                     {
                         playerPositions.RemoveLast();
-                    } 
+                    }
+                    obj.Update();//Player should move first :)
                     //Player going to Hell ?
                     obj.position = Player_Inside_the_World(obj.position);
 
@@ -43,8 +43,6 @@
 
                             if (fobj.position.IsEqual(obj.position))
                             {
-
-
                                 newBody = new PlayerBody(points);
                                 points++;
                                 gameObjects.Remove(fobj);
@@ -65,12 +63,16 @@
                         }
                     }
                 }
-                if(obj is PlayerBody)
+                else
+                {
+                    obj.Update();//Player should move first :)
+                }
+                if (obj is PlayerBody)
                 {
                     PlayerBody objectBody = (PlayerBody)obj;
                     obj.position = playerPositions.ElementAt(objectBody.Step);
                 }
-                obj.Update();
+                //obj.Update();
             }
             if (gameOver)
             {
