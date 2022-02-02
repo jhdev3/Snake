@@ -18,7 +18,6 @@
 
         public void Update()
         {
-
             // TODO
             foreach (GameObject obj in gameObjects.ToList())
             {

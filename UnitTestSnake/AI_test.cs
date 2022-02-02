@@ -28,7 +28,7 @@ namespace UnitTestSnake
             world.gameObjects.Add(AI);
 
             //act - Snake moving up
-            AI.Update();
+            AI.AIselectDirection();
 
             //Assert
             Assert.Equal(Player.Direction.Up, AI.playerDirection);
@@ -46,7 +46,7 @@ namespace UnitTestSnake
             world.gameObjects.Add(AI);
 
             //act - Snake moving left
-            AI.Update();
+            AI.AIselectDirection();
 
             //Assert
             Assert.Equal(Player.Direction.Left, AI.playerDirection);
@@ -64,7 +64,7 @@ namespace UnitTestSnake
             world.gameObjects.Add(AI);
 
             //act - Snake moving up
-            AI.Update();
+            AI.AIselectDirection();
 
             //Assert
             Assert.Equal(Player.Direction.Up, AI.playerDirection);
@@ -81,8 +81,8 @@ namespace UnitTestSnake
             AISnake AI = new AISnake(world, new Position { x=0, y = 6 });
             world.gameObjects.Add(AI);
 
-            //act - Snake moving up
-            AI.Update();
+            //act - Snake should move Left
+            AI.AIselectDirection();
 
             //Assert
             Assert.Equal(Player.Direction.Left, AI.playerDirection);

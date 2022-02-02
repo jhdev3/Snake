@@ -82,6 +82,8 @@ class Program
 
             renderer.Render_Blank();//Remove old frame/positions
 
+            aISnake.AIselectDirection();
+
             //Create new positons/frames
             world.Update();
             renderer.Render();
