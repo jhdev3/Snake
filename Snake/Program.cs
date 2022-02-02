@@ -29,8 +29,13 @@ class Program
         Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
         Food food = new Food(foodPlacement);
         world.gameObjects.Add(food);
+        AISnake aISnake = new AISnake(world, new Position { x= 5, y = 5 });   
+        world.gameObjects.Add(aISnake); 
 
-        world.gameObjects.Add(new Food(new Position { x = 5, y = 6}));
+
+
+
+        world.gameObjects.Add(new Food(new Position { x = 5, y = 18}));
 
 
 

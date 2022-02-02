@@ -7,7 +7,8 @@
 
         public List<GameObject> gameObjects = new List<GameObject>();
 
-        public int points = 0;
+        public int Points = 0;
+        public int AIpoints = 0;
         
         public GameWorld (int width, int height)
         {
@@ -35,7 +36,10 @@
 
                             if (fobj.position.IsEqual(obj.position))
                             {
-                                points++;
+                                if (obj is AISnake)
+                                    AIpoints++;
+                                else
+                                    Points++;
                                 gameObjects.Remove(fobj);
                                 var Random = new Random();
                                 Position foodPlacement = new Position { x = Random.Next(50), y = Random.Next(20) };
