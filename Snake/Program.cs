@@ -25,6 +25,11 @@ class Program
         Player worm = new Player();
         world.gameObjects.Add(worm);
 
+        Player worm2 = new Player();
+        world.gameObjects.Add(worm2);
+        worm2.Appearance = '#';
+        worm2.position = new Position { x = 10, y = 10 };
+
         var Random = new Random();
         Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
         Food food = new Food(foodPlacement);
@@ -45,37 +50,60 @@ class Program
             DateTime before = DateTime.Now;
 
             // Hantera knapptryckningar från användaren
+            
             ConsoleKey key = ReadKeyIfExists();
-            switch (key)
+            if (key == ConsoleKey.UpArrow || key == ConsoleKey.DownArrow 
+                || key == ConsoleKey.LeftArrow || key == ConsoleKey.RightArrow)
             {
-                case ConsoleKey.Q:
-                    running = false;
-                    break;
-                case ConsoleKey.UpArrow:
-                    worm.playerDirection = Player.Direction.Up;
+                switch (key)
+                {
+                    case ConsoleKey.Q:
+                        running = false;
+                        break;
+                    case ConsoleKey.UpArrow:
+                        worm.playerDirection = Player.Direction.Up;
 
-                    break;
-                case ConsoleKey.DownArrow:
-                    worm.playerDirection = Player.Direction.Down;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        worm.playerDirection = Player.Direction.Down;
 
-                    break;
-                case ConsoleKey.LeftArrow:
-                    worm.playerDirection = Player.Direction.Left;
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        worm.playerDirection = Player.Direction.Left;
 
-                    break;
-                case ConsoleKey.RightArrow:
-                    worm.playerDirection = Player.Direction.Right;
+                        break;
+                    case ConsoleKey.RightArrow:
+                        worm.playerDirection = Player.Direction.Right;
 
-                    break;
-                case ConsoleKey.P:
-                    worm.playerDirection = Player.Direction.NotMoving;
+                        break;
+                    case ConsoleKey.P:
+                        worm.playerDirection = Player.Direction.NotMoving;
+                        worm2.playerDirection = Player.Direction.NotMoving;
 
-                    break;
+                        break;
+                    case ConsoleKey.W:
+                        worm2.playerDirection = Player.Direction.Up;
 
-                    // TODO Lägg till logik för andra knapptryckningar
-                    // ...
-            }
+                        break;
+                    case ConsoleKey.S:
+                        worm2.playerDirection = Player.Direction.Down;
 
+                        break;
+                    case ConsoleKey.A:
+                        worm2.playerDirection = Player.Direction.Left;
+
+                        break;
+                    case ConsoleKey.D:
+                        worm2.playerDirection = Player.Direction.Right;
+                        break;
+
+                        // TODO Lägg till logik för andra knapptryckningar
+                        // ...
+                }
+            }           
+                       
+             
+        
             // Uppdatera världen och rendera om
 
             renderer.Render_Blank();//Remove old frame/positions
