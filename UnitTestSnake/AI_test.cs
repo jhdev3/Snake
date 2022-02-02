@@ -53,6 +53,42 @@ namespace UnitTestSnake
 
         }
 
+        [Fact]
+        public void AIUpdate_EdgeMovmentYaxis_DirectionUp()
+        {
+            //Arrange   
+            Food food = new Food(new Position { x = 5, y= world.Height-1});
+            world.gameObjects.Add(food);
+
+            AISnake AI = new AISnake(world, new Position { x=5, y = 0 });
+            world.gameObjects.Add(AI);
+
+            //act - Snake moving up
+            AI.Update();
+
+            //Assert
+            Assert.Equal(Player.Direction.Up, AI.playerDirection);
+
+        }
+        [Fact]
+
+        public void AIUpdate_EdgeMovmentXaxis_DirectionLeft()
+        {
+            //Arrange   
+            Food food = new Food(new Position { x = world.Width-1, y= 5 });
+            world.gameObjects.Add(food);
+
+            AISnake AI = new AISnake(world, new Position { x=0, y = 6 });
+            world.gameObjects.Add(AI);
+
+            //act - Snake moving up
+            AI.Update();
+
+            //Assert
+            Assert.Equal(Player.Direction.Left, AI.playerDirection);
+
+        }
+
 
     }
 }

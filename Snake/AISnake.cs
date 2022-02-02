@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 //Amazing AI Snake ;) 
 namespace Snake
 {
+    /// <summary>
+    /// Computer controlled player 
+    /// </summary>
     internal class AISnake : Player
     {
         private GameWorld _AIWorld;
@@ -23,7 +26,7 @@ namespace Snake
         }
         public override void Update()
         {
-            this.playerDirection = AIselectDirection();
+            AIselectDirection();
             switch (this.playerDirection)
             {
                 case Direction.Up:
@@ -44,8 +47,10 @@ namespace Snake
                     break;
             }
         }
-
-        private Direction AIselectDirection()
+        /// <summary>
+        /// AI Choose a posistion based of Food posistion. Goal should be choose closest Direction
+        /// </summary>
+        private void AIselectDirection()
         {
             Position food = getFoodPosistion();
             int xDistance = food.x - position.x;
@@ -54,23 +59,25 @@ namespace Snake
             if( xDistance == 0)
             { 
                 if(yDistance > 0)
-                    return Direction.Down;
+                    this.playerDirection = Direction.Down;
                 else if(yDistance < 0)
                 {
-                    return Direction.Up;
+                    this.playerDirection = Direction.Up;
                 }
             }
             else if(xDistance > 0)
             {
-                return Direction.Right;
+                this.playerDirection =  Direction.Right;
             }
             else if(xDistance < 0)
             {
-                return Direction.Left;
-            }
-            
-            return Direction.Down;
+                this.playerDirection = Direction.Left;
+            }            
         }
+        /// <summary>
+        /// Get posistion of Food Object
+        /// </summary>
+        /// <returns>Food Object Posistion</returns>
         private Position getFoodPosistion()
         {            
             foreach (var food in _AIWorld.gameObjects)

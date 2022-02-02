@@ -20,7 +20,7 @@ namespace UnitTestSnake
         public void Update_SnakeEatFoodRightEdgeComingFromLeftEdge_FoodNotExistInWorld()
         {
             //Arrange   
-            Position placeFood = new Position { x= Program.WorldWidth-1, y= 3 };
+            Position placeFood = new Position { x= world.Width-1, y= 3 };
             Food food = new Food(placeFood);
             Player player = new Player(new Position{ x=0, y = 3});
             world.gameObjects.Add(player);

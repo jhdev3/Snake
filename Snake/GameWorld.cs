@@ -52,7 +52,12 @@
                 }
             }
         }
-        //Adding som Gravity to the player :)
+        //The earth is not flat :)
+        /// <summary>
+        ///   Creates a new position if the player goes outside of the GamingWorld
+        /// </summary>
+        /// <param name="pos"> Snake posistion</param>
+        /// <returns>new or same posistion</returns>
         private Position Player_Inside_the_World(Position pos)
         {
             //Height
