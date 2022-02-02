@@ -52,9 +52,7 @@ class Program
             // Hantera knapptryckningar från användaren
             
             ConsoleKey key = ReadKeyIfExists();
-            if (key == ConsoleKey.UpArrow || key == ConsoleKey.DownArrow 
-                || key == ConsoleKey.LeftArrow || key == ConsoleKey.RightArrow)
-            {
+            
                 switch (key)
                 {
                     case ConsoleKey.Q:
@@ -100,7 +98,7 @@ class Program
                         // TODO Lägg till logik för andra knapptryckningar
                         // ...
                 }
-            }           
+                       
                        
              
         
