@@ -40,6 +40,7 @@
                                     AIpoints++;
                                 else
                                     Points++;
+
                                 gameObjects.Remove(fobj);
                                 var Random = new Random();
                                 Position foodPlacement = new Position { x = Random.Next(50), y = Random.Next(20) };

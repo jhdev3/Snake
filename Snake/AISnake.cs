@@ -23,6 +23,7 @@ namespace Snake
         }
         public override void Update()
         {
+            this.playerDirection = AIselectDirection();
             switch (this.playerDirection)
             {
                 case Direction.Up:
@@ -42,6 +43,44 @@ namespace Snake
                     position.y += 0;
                     break;
             }
+        }
+
+        private Direction AIselectDirection()
+        {
+            Position food = getFoodPosistion();
+            int xDistance = food.x - position.x;
+            int yDistance = food.y - position.y;
+
+            if( xDistance == 0)
+            { 
+                if(yDistance > 0)
+                    return Direction.Down;
+                else if(yDistance < 0)
+                {
+                    return Direction.Up;
+                }
+            }
+            else if(xDistance > 0)
+            {
+                return Direction.Right;
+            }
+            else if(xDistance < 0)
+            {
+                return Direction.Left;
+            }
+            
+            return Direction.Down;
+        }
+        private Position getFoodPosistion()
+        {            
+            foreach (var food in _AIWorld.gameObjects)
+            {
+                if (food is Food)
+                {
+                    return food.position;
+                }
+            }
+            return new Position { x= 0, y = 0};
         }
     }
 }

@@ -35,7 +35,7 @@ class Program
 
 
 
-        world.gameObjects.Add(new Food(new Position { x = 5, y = 18}));
+        world.gameObjects.Add(new Food(new Position { x = 5, y = 10}));
 
 
 
