@@ -26,13 +26,13 @@ class Program
         world.gameObjects.Add(worm);
 
         world.Create_Food();
-        AISnake aISnake = new AISnake(world, new Position { x= 5, y = 5 });   
+        AISnake aISnake = new AISnake(world, new Position { x= WorldWidth-4, y = WorldHeight-4});   
         world.gameObjects.Add(aISnake); 
 
 
 
 
-        world.gameObjects.Add(new Food(new Position { x = 5, y = 10}));
+       // world.gameObjects.Add(new Food(new Position { x = 5, y = 10}));
 
 
 
@@ -82,7 +82,7 @@ class Program
 
             renderer.Render_Blank();//Remove old frame/positions
 
-            aISnake.AIselectDirection();
+            aISnake.SmarterAI();
 
             //Create new positons/frames
             world.Update();
