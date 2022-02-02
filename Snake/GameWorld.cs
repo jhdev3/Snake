@@ -28,7 +28,7 @@
                 if (obj is Player)
                 {
                     playerPositions.AddFirst(obj.position.Clone());
-                    for (int i = playerPositions.Count - 1; i > points; i--)
+                    for (int i = playerPositions.Count - 1; i > points; i--)//Vad gör For loopen ? 
                     {
                         playerPositions.RemoveLast();
                     }
@@ -43,7 +43,7 @@
 
                             if (fobj.position.IsEqual(obj.position))
                             {
-                                newBody = new PlayerBody(points);
+                                newBody = new PlayerBody(points); //Becomes the position in the linked list
                                 points++;
                                 gameObjects.Remove(fobj);
                                 var Random = new Random();
@@ -67,6 +67,7 @@
                 {
                     obj.Update();//Player should move first :)
                 }
+                //
                 if (obj is PlayerBody)
                 {
                     PlayerBody objectBody = (PlayerBody)obj;
