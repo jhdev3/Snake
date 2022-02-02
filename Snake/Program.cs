@@ -8,6 +8,7 @@ class Program
     static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
     static void Loop()
     {
+        Console.CursorVisible = false;
         // Initialisera spelet
         const int frameRate = 5;
         GameWorld world = new GameWorld(50,20);

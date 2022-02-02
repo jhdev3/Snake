@@ -24,5 +24,13 @@ namespace Snake
             return "X: " + x + " " + "Y: " + y;
         }
 
+        public Position Clone()
+        {
+            Position result = new Position();
+            result.x = x;
+            result.y = y;
+            return result;
+        }
+
     }
 }
