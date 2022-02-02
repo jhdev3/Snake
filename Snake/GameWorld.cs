@@ -18,21 +18,24 @@
 
         public void Update()
         {
-            Console.WriteLine();
 
-            //Player_Out_Of_Field();
             // TODO
             PlayerBody newBody = null;
             bool gameOver = false;
-            foreach (GameObject obj in gameObjects)
+            foreach (GameObject obj in gameObjects.ToList())
             {
-                if(obj is Player)
+                obj.Update();//Player should move first :)
+
+                if (obj is Player)
                 {
                     playerPositions.AddFirst(obj.position.Clone());
                     for (int i = playerPositions.Count - 1; i > points; i--)
                     {
                         playerPositions.RemoveLast();
                     } 
+                    //Player going to Hell ?
+                    obj.position = Player_Inside_the_World(obj.position);
+
                     foreach (GameObject fobj in gameObjects)
                     {
                         if(fobj is Food)
@@ -44,10 +47,11 @@
 
                                 newBody = new PlayerBody(points);
                                 points++;
+                                gameObjects.Remove(fobj);
                                 var Random = new Random();
-                                Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20) };
-                                fobj.position = foodPlacement; 
-
+                                Position foodPlacement = new Position { x = Random.Next(50), y = Random.Next(20) };
+                                gameObjects.Add(new Food(foodPlacement));
+                                break;
                             }
                         }
                         if(fobj is PlayerBody)
@@ -98,36 +102,33 @@
                 gameObjects.Add(newBody);
             }
         }
+        //Adding som Gravity to the player :)
+        private Position Player_Inside_the_World(Position pos)
+        {
+            //Height
+            if (pos.y >= Height)
+            {
+                pos.y = 0;
+            }
 
-        //private void Player_Out_Of_Field()
-        //{
+            else if (pos.y < 0)
+            {
+                pos.y = Height-1;
+            }
+            //Width
+            else if (pos.x >= Width)
+            {
+                pos.x = 0;
+            }
 
-        //    //Height
-        //    if (gameObjects[0].position.y == Height)
-        //    {
-        //        gameObjects[0].position.y = 0;
-        //    }
+            else if (pos.x < 0)
+            {
+                pos.x = Width-1;
+            }
 
-        //    else if (gameObjects[0].position.y == -1)
-        //    {
-        //        gameObjects[0].position.y = Height-1;
-        //        Console.WriteLine(gameObjects[0].position.y);
+            return pos;
 
-
-        //    }
-        //    //Width
-        //    else if (gameObjects[0].position.x == Width)
-        //    {
-        //        gameObjects[0].position.x = 0;
-        //    }
-
-        //    else if (gameObjects[0].position.x == -1)
-        //    {
-        //        gameObjects[0].position.x = Width-1;
-        //    }
-
-        //  //  Console.WriteLine(gameObjects[0].position.x);
-        //}
+        }
 
     }
 }
