@@ -11,9 +11,9 @@ namespace Snake
     /// Computer controlled player 
     /// Competes against the player for food 
     /// Got 2 methods: 
-    ///     AIselectDirection snake dont know the world is round
-    ///     SmarterAI know that the world is round ;)
-    /// Focusing on first Food object in the list 
+    ///     AIselectDirection used for change the direction snake dont know the world is round
+    ///  
+    /// Focusing on first Food object in the list in case you create more :)
     /// Could be used for UI-Testing
     /// </summary>
     internal class AISnake : Player
@@ -56,19 +56,7 @@ namespace Snake
                 this.playerDirection = Direction.Left;
             }            
         }
-        /// <summary>
-        /// Super Smart AI 
-        /// Cant move 
-        /// </summary>
-        public void SmarterAI()
-        {
-            Position food = getFoodPosistion();
-            int xDistance = Calculate_XShortestPath(food.x);
-            int yDistance = 0;
 
-            if (xDistance == 0)
-                yDistance = Calculate_YShortestPath(food.y);
-        }
         /// <summary>
         /// Get posistion of Food Object
         /// </summary>
@@ -84,83 +72,7 @@ namespace Snake
             }
             return new Position { x= 0, y = 0};
         }
-        /// <summary>
-        /// Should Calculate the shortest path in X and return correct direction
-        /// </summary>
-        /// <returns>Distance in xAxis</returns>
-        public int Calculate_XShortestPath(int foodX)
-        {
-            int distance = foodX - position.x;
-
-            if (distance > 0)//Ska gå Höger kolla om det är värt att gå vänster
-            {
-                int distanceGoingLeft = _AIWorld.Width- foodX + position.x;
-                if (distanceGoingLeft < distance)
-                {
-                    this.playerDirection = Direction.Left;
-                    return distanceGoingLeft;
-                }
-                else
-                {
-                    this.playerDirection = Direction.Right;
-                    return distance;
-                }
-            }
-            else if (distance == 0)
-                return 0;
-            else
-            {
-                distance = distance * -1;
-                int distanceGoingRight = _AIWorld.Width - position.x + foodX;
-                if (distanceGoingRight < distance)
-                {
-                    this.playerDirection=Direction.Right;
-                    return distanceGoingRight;
-                }
-               
-                 this.playerDirection=Direction.Left;
-                 return distance;
-                
-            }
-
-        }
-
-        /// <summary>
-        /// Calculate the shortestDistance in Y axis setting the direction and returns the value
-        /// </summary>
-        /// <param name="foodY"> Position för Y </param>
-        /// <returns>Shortest distance in Y</returns>
-
-        public int Calculate_YShortestPath(int foodY)
-        {
-            int distance = foodY - position.y;
-            int distanceTop = _AIWorld.Height - foodY + position.y;
-
-            int distanceBottom = _AIWorld.Height - position.y + foodY;
-
-            if (distance > 0 &&   distanceTop < distance ) 
-            {
-                playerDirection = Direction.Up;
-                return distanceTop;
-            }
-            else if ( distanceBottom < (distance *-1))
-            {
-                playerDirection = Direction.Down;
-                return distanceBottom;
-            }
-            else
-            {
-                if (distance < 0)
-                { 
-                  
-                    this.playerDirection = Direction.Up;
-                    return distance *-1;
-                }
-
-                this.playerDirection = Direction.Down;
-                return distance;
-            }
-        }
+   
 
     }
 

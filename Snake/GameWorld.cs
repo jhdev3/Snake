@@ -40,7 +40,7 @@
                                 else
                                     Points++;
 
-                                //gameObjects.Remove(fobj);
+                                gameObjects.Remove(fobj);
                                 Create_Food();
                                 break;
                             }
