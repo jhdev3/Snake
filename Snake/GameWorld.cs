@@ -9,21 +9,20 @@
 
         public int Points = 0;
         public int AIpoints = 0;
-        
-        public GameWorld (int width, int height)
+
+        public GameWorld(int width, int height)
         {
-            Width = width; 
-            Height = height;   
+            Width = width;
+            Height = height;
         }
 
         public void Update()
         {
             // TODO
-            
-            bool gameOver = false;
+
             foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 
             {
-                obj.Update();//Player should move first :)
+                obj.Update();
 
                 if (obj is Player)
                 {
@@ -35,7 +34,6 @@
                     {
                         if (fobj is Food)
                         {
-                            //newBody = new PlayerBody(Points); //Becomes the position in the linked list
                             if (fobj.position.IsEqual(obj.position))
                             {
                                 Player player = (Player)obj;
@@ -61,12 +59,12 @@
                         }
                     }
                 }
-          
+
 
 
             }
-         
-      
+
+
         }
         //The earth is not flat :)
         /// <summary>
@@ -84,7 +82,7 @@
 
             else if (pos.y < 0)
             {
-                pos.y = Height-1;
+                pos.y = Height - 1;
             }
             //Width
             else if (pos.x >= Width)
@@ -94,7 +92,7 @@
 
             else if (pos.x < 0)
             {
-                pos.x = Width-1;
+                pos.x = Width - 1;
             }
 
             return pos;
@@ -107,9 +105,9 @@
         public void Create_Food()
         {
             var Random = new Random();
-            Position foodPosistion = new Position { x = Random.Next(this.Width), y = Random.Next(this.Height)};
+            Position foodPosistion = new Position { x = Random.Next(this.Width), y = Random.Next(this.Height) };
             gameObjects.Add(new Food(foodPosistion));
         }
     }
 }
-       
+
