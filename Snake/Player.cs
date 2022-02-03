@@ -9,7 +9,7 @@ namespace Snake
 
     internal class Player : GameObject
     {
-        public enum Direction { Up, Down, Left, Right, NotMoving }
+        public enum Direction { Up, Down, Left, Right}
 
         public Direction playerDirection;
         //Needs a Start postion
@@ -17,14 +17,14 @@ namespace Snake
         {
             Position start = new Position { x = 3, y = 3};
 
-            this.playerDirection = Direction.NotMoving;
+            this.playerDirection = Direction.Down;
             position = start;
             Appearance = '☻';
         }
         public Player(Position start)
         {
 
-            this.playerDirection = Direction.NotMoving;
+            this.playerDirection = Direction.Down;
             position = start;
             Appearance = '☻';
         }

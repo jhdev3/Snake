@@ -10,6 +10,7 @@
 #pragma warning disable CA1416 // Validate platform compatibility
            Console.SetWindowSize(gameWorld.Width, gameWorld.Height + 1);  // Fungerar Bara på Windows gissar att det är rätt xD
 #pragma warning restore CA1416 // Validate platform compatibility
+           
 
             world = gameWorld;
         }
@@ -18,8 +19,7 @@
         {
 
             // TODO Rendera spelvärlden (och poängräkningen)
-            Console.SetCursorPosition(0, world.Height);
-            Console.Write($"Points {world.points}");
+            
 
             // Använd
 
@@ -28,6 +28,10 @@
                 Console.SetCursorPosition(obj.position.x, obj.position.y);
                 Console.Write(obj.Appearance);
             }
+            Console.SetCursorPosition(0, world.Height);
+            Console.Write($"Points {world.Points}");
+            Console.SetCursorPosition(world.Width-15, world.Height);
+            Console.Write($"AI Points {world.AIpoints}");
         }
         public void Render_Blank()
         {

@@ -25,6 +25,9 @@ class Program
         Player worm = new Player();
         world.gameObjects.Add(worm);
 
+        world.Create_Food();
+        world.Create_Food();
+        world.Create_Food();
         Player worm2 = new Player();
         world.gameObjects.Add(worm2);
         worm2.Appearance = '#';
@@ -35,7 +38,12 @@ class Program
         Food food = new Food(foodPlacement);
         world.gameObjects.Add(food);
 
-        world.gameObjects.Add(new Food(new Position { x = 5, y = 6}));
+     
+
+
+
+
+       // world.gameObjects.Add(new Food(new Position { x = 5, y = 10}));
 
 
 
@@ -52,6 +60,33 @@ class Program
             // Hantera knapptryckningar från användaren
             
             ConsoleKey key = ReadKeyIfExists();
+            switch (key)
+            {
+                case ConsoleKey.Q:
+                    running = false;
+                    break;
+                case ConsoleKey.UpArrow:
+                    worm.playerDirection = Player.Direction.Up;
+
+                    break;
+                case ConsoleKey.DownArrow:
+                    worm.playerDirection = Player.Direction.Down;
+
+                    break;
+                case ConsoleKey.LeftArrow:
+                    worm.playerDirection = Player.Direction.Left;
+
+                    break;
+                case ConsoleKey.RightArrow:
+                    worm.playerDirection = Player.Direction.Right;
+
+                    break;
+                
+
+                    // TODO Lägg till logik för andra knapptryckningar
+                    // ...
+            }
+
             
                 switch (key)
                 {
@@ -106,9 +141,11 @@ class Program
 
             renderer.Render_Blank();//Remove old frame/positions
 
+
             //Create new positons/frames
             world.Update();
             renderer.Render();
+       
 
             // Mät hur lång tid det tog
             double frameTime = Math.Ceiling(1000.0 / frameRate - (DateTime.Now - before).TotalMilliseconds);
@@ -124,6 +161,7 @@ class Program
 
     static void Main(string[] args)
     {
+     
         // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
         Loop();
     }
