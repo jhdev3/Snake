@@ -7,7 +7,8 @@
 
         public List<GameObject> gameObjects = new List<GameObject>();
 
-        public int points = 0;
+        public int Points = 0;
+        public int AIpoints = 0;
         
         public GameWorld (int width, int height)
         {
@@ -17,11 +18,10 @@
 
         public void Update()
         {
-
             // TODO
-            foreach (GameObject obj in gameObjects.ToList())
+            foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 
             {
-                obj.Update();//Player should move first :)
+                obj.Update();
 
                 if (obj is Player)
                 {
@@ -35,11 +35,9 @@
 
                             if (fobj.position.IsEqual(obj.position))
                             {
-                                points++;
+                            
                                 gameObjects.Remove(fobj);
-                                var Random = new Random();
-                                Position foodPlacement = new Position { x = Random.Next(50), y = Random.Next(20) };
-                                gameObjects.Add(new Food(foodPlacement));
+                                Create_Food();
                                 break;
                             }
                         }
@@ -47,7 +45,12 @@
                 }
             }
         }
-        //Adding som Gravity to the player :)
+        //The earth is not flat :)
+        /// <summary>
+        ///   Creates a new position if the player goes outside of the GamingWorld
+        /// </summary>
+        /// <param name="pos"> Snake posistion</param>
+        /// <returns>new or same posistion</returns>
         private Position Player_Inside_the_World(Position pos)
         {
             //Height
@@ -75,6 +78,15 @@
 
         }
 
+        /// <summary>
+        /// Creates Food at random posistion
+        /// </summary>
+        public void Create_Food()
+        {
+            var Random = new Random();
+            Position foodPosistion = new Position { x = Random.Next(this.Width), y = Random.Next(this.Height)};
+            gameObjects.Add(new Food(foodPosistion));
+        }
     }
 }
        
