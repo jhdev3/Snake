@@ -12,6 +12,9 @@ namespace Snake
         public enum Direction { Up, Down, Left, Right}
 
         public Direction playerDirection;
+        public LinkedList<Position> Positions = new LinkedList<Position>();
+        public int Points = 0; //The points to calculate how big the body is
+
         //Needs a Start postion
         public Player ()
         {
@@ -31,6 +34,12 @@ namespace Snake
 
         public override void Update()
         {
+            Positions.AddFirst(this.position.Clone());
+            for (int i = Positions.Count - 1; i > Points; i--)//Vad gör For loopen ? 
+            {
+                Positions.RemoveLast();
+            }
+
             switch (this.playerDirection)
             {
                 case Direction.Up:

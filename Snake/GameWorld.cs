@@ -6,7 +6,6 @@
         public int Height = 0;
 
         public List<GameObject> gameObjects = new List<GameObject>();
-        public LinkedList<Position> playerPositions = new LinkedList<Position>();
 
         public int Points = 0;
         public int AIpoints = 0;
@@ -20,93 +19,54 @@
         public void Update()
         {
             // TODO
-            PlayerBody newBody = null;
+            
             bool gameOver = false;
             foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 
             {
+                obj.Update();//Player should move first :)
 
                 if (obj is Player)
                 {
-                    playerPositions.AddFirst(obj.position.Clone());
-                    for (int i = playerPositions.Count - 1; i > points; i--)//Vad gör For loopen ? 
-                    {
-                        playerPositions.RemoveLast();
-                    }
-                    obj.Update();//Player should move first :)
+
                     //Player going to Hell ?
                     obj.position = Player_Inside_the_World(obj.position);
 
                     foreach (GameObject fobj in gameObjects)
                     {
-                        if(fobj is Food)
+                        if (fobj is Food)
                         {
-
+                            //newBody = new PlayerBody(Points); //Becomes the position in the linked list
                             if (fobj.position.IsEqual(obj.position))
                             {
+                                Player player = (Player)obj;
+                                gameObjects.Add(new PlayerBody(player.Points, player));
+                                player.Points++;
+
                                 if (obj is TheGreatAI)
                                     AIpoints++;
                                 else
                                     Points++;
 
-                                newBody = new PlayerBody(points); //Becomes the position in the linked list
-                                points++;
                                 gameObjects.Remove(fobj);
                                 Create_Food();
                                 break;
                             }
                         }
-                        if(fobj is PlayerBody)
+                        if (fobj is PlayerBody)
                         {
                             if (fobj.position.IsEqual(obj.position))
                             {
-
-                                gameOver = true;
-
+                                //The player obj should lose the game here
                             }
                         }
                     }
                 }
-                else
-                {
-                    obj.Update();//Player should move first :)
-                }
-                //
-                if (obj is PlayerBody)
-                {
-                    PlayerBody objectBody = (PlayerBody)obj;
-                    obj.position = playerPositions.ElementAt(objectBody.Step);
-                }
-                //obj.Update();
+          
+
+
             }
-            if (gameOver)
-            {
-                Console.WriteLine("Game over!");
-                Console.WriteLine("Press enter to try again");
-                Console.ReadLine();
-                Console.Clear();
-                gameOver = false;
-                points = 0;
-                Player player = (Player)gameObjects.Find(x => x is Player);
-                player.position = new Position { x = 3, y = 3 };
-                player.playerDirection = Player.Direction.NotMoving;
-                var Random = new Random();
-                Position foodPlacement = new Position { x = Random.Next(50), y = Random.Next(20) };
-                Food food = (Food)gameObjects.Find(x => x is Food);
-                food.position = foodPlacement;
-                List<GameObject> newGameObjects = new List<GameObject>();
-                foreach (GameObject obj in gameObjects) {
-                    if(!(obj is PlayerBody))
-                    {
-                        newGameObjects.Add(obj);
-                    }
-                }
-                gameObjects = newGameObjects;
-                
-            }
-            if (newBody != null)
-            {
-                gameObjects.Add(newBody);
-            }
+         
+      
         }
         //The earth is not flat :)
         /// <summary>
