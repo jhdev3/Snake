@@ -5,11 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-//Amazing AI Snake ;) 
 namespace Snake
 {
     /// <summary>
     /// Computer controlled player 
+    /// Competes against the player for food 
+    /// Got 2 methods: 
+    ///     AIselectDirection snake dont know the world is round
+    ///     SmarterAI know that the world is round ;)
+    /// Focusing on first Food object in the list 
+    /// Could be used for UI-Testing
     /// </summary>
     internal class AISnake : Player
     {

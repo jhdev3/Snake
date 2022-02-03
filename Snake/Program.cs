@@ -26,6 +26,9 @@ class Program
         world.gameObjects.Add(worm);
 
         world.Create_Food();
+        world.Create_Food();
+        world.Create_Food();
+
         AISnake aISnake = new AISnake(world, new Position { x= WorldWidth-4, y = WorldHeight-4});   
         world.gameObjects.Add(aISnake); 
 
@@ -69,10 +72,7 @@ class Program
                     worm.playerDirection = Player.Direction.Right;
 
                     break;
-                case ConsoleKey.P:
-                    worm.playerDirection = Player.Direction.NotMoving;
-
-                    break;
+                
 
                     // TODO Lägg till logik för andra knapptryckningar
                     // ...
@@ -82,11 +82,12 @@ class Program
 
             renderer.Render_Blank();//Remove old frame/positions
 
-            aISnake.SmarterAI();
+            aISnake.SmarterAI(); // Ai Makes a move :)
 
             //Create new positons/frames
             world.Update();
             renderer.Render();
+       
 
             // Mät hur lång tid det tog
             double frameTime = Math.Ceiling(1000.0 / frameRate - (DateTime.Now - before).TotalMilliseconds);
