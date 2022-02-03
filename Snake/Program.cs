@@ -6,11 +6,11 @@ class Program
     /// Checks Console to see if a keyboard key has been pressed, if so returns it, otherwise NoName.
     /// </summary>
     static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
-
+    /// <summary>
+    /// To Set the GameWorlds Width and Height
+    /// </summary>
     public const int WorldWidth = 50;
     public const int WorldHeight = 20;
-    //public static readonly int WorldHeight = 20;
-
 
 
     static void Loop()
@@ -22,16 +22,30 @@ class Program
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
 
-        // TODO Skapa spelare och andra objekt etc. genom korrekta anrop till vår GameWorld-instans
+
         Player worm = new Player();
         world.gameObjects.Add(worm);
 
-        var Random = new Random();
-        Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
-        Food food = new Food(foodPlacement);
-        world.gameObjects.Add(food);
+        world.Create_Food();
+        world.Create_Food();
+        world.Create_Food();
 
-        world.gameObjects.Add(new Food(new Position { x = 5, y = 6}));
+        Player worm2 = new Player();
+        world.gameObjects.Add(worm2);
+        worm2.Appearance = '#';
+        worm2.position = new Position { x = 10, y = 10 };
+
+
+        TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = WorldWidth-4, y = WorldHeight-4});
+        world.gameObjects.Add(AIsnake); 
+        
+
+
+
+
+
+
+        // world.gameObjects.Add(new Food(new Position { x = 5, y = 10}));
 
 
 
@@ -46,44 +60,23 @@ class Program
             DateTime before = DateTime.Now;
 
             // Hantera knapptryckningar från användaren
+
             ConsoleKey key = ReadKeyIfExists();
-            switch (key)
-            {
-                case ConsoleKey.Q:
-                    running = false;
-                    break;
-                case ConsoleKey.UpArrow:
-                    worm.playerDirection = Player.Direction.Up;
 
-                    break;
-                case ConsoleKey.DownArrow:
-                    worm.playerDirection = Player.Direction.Down;
+            running = Player1Move(worm, key);
 
-                    break;
-                case ConsoleKey.LeftArrow:
-                    worm.playerDirection = Player.Direction.Left;
+           Player2Move(worm2, key);
 
-                    break;
-                case ConsoleKey.RightArrow:
-                    worm.playerDirection = Player.Direction.Right;
-
-                    break;
-                case ConsoleKey.P:
-                    worm.playerDirection = Player.Direction.NotMoving;
-
-                    break;
-
-                    // TODO Lägg till logik för andra knapptryckningar
-                    // ...
-            }
 
             // Uppdatera världen och rendera om
 
             renderer.Render_Blank();//Remove old frame/positions
 
+            AIsnake.SmarterAI();
             //Create new positons/frames
             world.Update();
             renderer.Render();
+
 
             // Mät hur lång tid det tog
             double frameTime = Math.Ceiling(1000.0 / frameRate - (DateTime.Now - before).TotalMilliseconds);
@@ -94,11 +87,74 @@ class Program
             }
         }
     }
-    //Creating some Gravity for the little worm :) 
-   
+    /// <summary>
+    /// Setting Direction of Player one Using the arrow keys
+    /// </summary>
+    /// <param name="p1">Player 1 sets the Direction</param>
+    /// <param name="key"> Choose Direction</param>
+    /// <returns>False to end the game</returns>
+    static bool Player1Move(Player p1, ConsoleKey key)
+    { 
+
+        bool running = true;
+        switch (key)
+        {
+            case ConsoleKey.Q:
+                running = false;
+                break;
+            case ConsoleKey.UpArrow:
+                p1.playerDirection = Player.Direction.Up;
+
+                break;
+            case ConsoleKey.DownArrow:
+                p1.playerDirection = Player.Direction.Down;
+
+                break;
+            case ConsoleKey.LeftArrow:
+                p1.playerDirection = Player.Direction.Left;
+
+                break;
+            case ConsoleKey.RightArrow:
+                p1.playerDirection = Player.Direction.Right;
+                break;      
+        }
+        return running;
+
+    }
+    /// <summary>
+    /// Setting Direction of player two using A,S, D, W
+    /// </summary>
+    /// <param name="p2">Sets player2 Direction</param>
+    /// <param name="key">Input key from input stream</param>
+    static void Player2Move(Player p2, ConsoleKey key)
+    {
+
+        switch (key)
+        {
+            
+            case ConsoleKey.W:
+                p2.playerDirection = Player.Direction.Up;
+
+                break;
+            case ConsoleKey.S:
+                p2.playerDirection = Player.Direction.Down;
+
+                break;
+            case ConsoleKey.A:
+                p2.playerDirection = Player.Direction.Left;
+
+                break;
+            case ConsoleKey.D:
+                p2.playerDirection = Player.Direction.Right;
+                break;
+        }
+
+    }
+
 
     static void Main(string[] args)
     {
+
         // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
         Loop();
     }
