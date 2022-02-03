@@ -35,7 +35,11 @@
 
                             if (fobj.position.IsEqual(obj.position))
                             {
-                            
+                                if (obj is TheGreatAI)
+                                    AIpoints++;
+                                else
+                                    Points++;
+
                                 gameObjects.Remove(fobj);
                                 Create_Food();
                                 break;

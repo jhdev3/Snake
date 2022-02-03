@@ -13,7 +13,6 @@ class Program
     public const int WorldHeight = 20;
 
 
-
     static void Loop()
     {
         // Initialisera spelet
@@ -36,6 +35,9 @@ class Program
         worm2.position = new Position { x = 10, y = 10 };
 
 
+        TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = WorldWidth-4, y = WorldHeight-4});
+        world.gameObjects.Add(AIsnake); 
+        
 
 
 
@@ -60,59 +62,16 @@ class Program
 
             ConsoleKey key = ReadKeyIfExists();
 
-            switch (key)
-            {
-                case ConsoleKey.Q:
-                    running = false;
-                    break;
-                case ConsoleKey.UpArrow:
-                    worm.playerDirection = Player.Direction.Up;
+            running = Player1Move(worm, key);
 
-                    break;
-                case ConsoleKey.DownArrow:
-                    worm.playerDirection = Player.Direction.Down;
-
-                    break;
-                case ConsoleKey.LeftArrow:
-                    worm.playerDirection = Player.Direction.Left;
-
-                    break;
-                case ConsoleKey.RightArrow:
-                    worm.playerDirection = Player.Direction.Right;
-
-                    break;
-                //case ConsoleKey.P:
-                //    worm.playerDirection = Player.Direction.NotMoving;
-                //    worm2.playerDirection = Player.Direction.NotMoving;
-                //    break;
-                case ConsoleKey.W:
-                    worm2.playerDirection = Player.Direction.Up;
-
-                    break;
-                case ConsoleKey.S:
-                    worm2.playerDirection = Player.Direction.Down;
-
-                    break;
-                case ConsoleKey.A:
-                    worm2.playerDirection = Player.Direction.Left;
-
-                    break;
-                case ConsoleKey.D:
-                    worm2.playerDirection = Player.Direction.Right;
-                    break;
-
-                    // TODO Lägg till logik för andra knapptryckningar
-                    // ...
-            }
-
-
+           Player2Move(worm2, key);
 
 
             // Uppdatera världen och rendera om
 
             renderer.Render_Blank();//Remove old frame/positions
 
-
+            AIsnake.SmarterAI();
             //Create new positons/frames
             world.Update();
             renderer.Render();
@@ -127,7 +86,69 @@ class Program
             }
         }
     }
-    //Creating some Gravity for the little worm :) 
+    /// <summary>
+    /// Setting Direction of Player one Using the arrow keys
+    /// </summary>
+    /// <param name="p1">Player 1 sets the Direction</param>
+    /// <param name="key"> Choose Direction</param>
+    /// <returns>False to end the game</returns>
+    static bool Player1Move(Player p1, ConsoleKey key)
+    { 
+
+        bool running = true;
+        switch (key)
+        {
+            case ConsoleKey.Q:
+                running = false;
+                break;
+            case ConsoleKey.UpArrow:
+                p1.playerDirection = Player.Direction.Up;
+
+                break;
+            case ConsoleKey.DownArrow:
+                p1.playerDirection = Player.Direction.Down;
+
+                break;
+            case ConsoleKey.LeftArrow:
+                p1.playerDirection = Player.Direction.Left;
+
+                break;
+            case ConsoleKey.RightArrow:
+                p1.playerDirection = Player.Direction.Right;
+                break;      
+        }
+        return running;
+
+    }
+    /// <summary>
+    /// Setting Direction of player two using A,S, D, W
+    /// </summary>
+    /// <param name="p2">Sets player2 Direction</param>
+    /// <param name="key">Input key from input stream</param>
+    static void Player2Move(Player p2, ConsoleKey key)
+    {
+
+        switch (key)
+        {
+            
+            case ConsoleKey.W:
+                p2.playerDirection = Player.Direction.Up;
+
+                break;
+            case ConsoleKey.S:
+                p2.playerDirection = Player.Direction.Down;
+
+                break;
+            case ConsoleKey.A:
+                p2.playerDirection = Player.Direction.Left;
+
+                break;
+            case ConsoleKey.D:
+                p2.playerDirection = Player.Direction.Right;
+                break;
+        }
+
+    }
 
 
     static void Main(string[] args)
