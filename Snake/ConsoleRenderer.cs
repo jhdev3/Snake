@@ -26,8 +26,14 @@
             foreach( GameObject obj in world.gameObjects)
             {
                 Console.SetCursorPosition(obj.position.x, obj.position.y);
+                Console.ForegroundColor = obj.color;                
                 Console.Write(obj.Appearance);
+
             }
+            Console.ResetColor();
+            Console.SetCursorPosition(0, world.Height);
+            Console.Write($"Points {world.points}");
+            Console.SetCursorPosition(world.Width-15, world.Height);
         }
         public void Render_Blank()
         {

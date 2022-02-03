@@ -27,8 +27,9 @@ class Program
 
         Player worm2 = new Player();
         world.gameObjects.Add(worm2);
-        worm2.Appearance = '#';
+        worm2.Appearance = '☺';
         worm2.position = new Position { x = 10, y = 10 };
+        worm2.color = ConsoleColor.Green;
 
         var Random = new Random();
         Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
