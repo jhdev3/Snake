@@ -19,7 +19,7 @@
         public void Update()
         {
             // TODO
-            foreach (GameObject obj in gameObjects.ToList())
+            foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 
             {
                 obj.Update();
 
@@ -40,7 +40,7 @@
                                 else
                                     Points++;
 
-                                gameObjects.Remove(fobj);
+                                //gameObjects.Remove(fobj);
                                 Create_Food();
                                 break;
                             }
