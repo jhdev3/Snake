@@ -28,15 +28,13 @@ class Program
         world.Create_Food();
         world.Create_Food();
         world.Create_Food();
+
         Player worm2 = new Player();
         world.gameObjects.Add(worm2);
         worm2.Appearance = '#';
         worm2.position = new Position { x = 10, y = 10 };
 
-        var Random = new Random();
-        Position foodPlacement = new Position { x = Random.Next(50), y= Random.Next(20)};
-        Food food = new Food(foodPlacement);
-        world.gameObjects.Add(food);
+      
 
      
 
