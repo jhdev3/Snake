@@ -37,10 +37,11 @@ namespace Snake
         {
             Position food = getFoodPosistion();
             int xDistance = Calculate_XShortestPath(food.x);
-            int yDistance = 0;
 
-            if (xDistance == 0)
-                yDistance = Calculate_YShortestPath(food.y);//yDistance not used but it will change the direction anyway ;)
+            if (xDistance == 0) 
+            { 
+                int yDistance = Calculate_YShortestPath(food.y);//yDistance not used but it will change the direction anyway ;)
+            }
         }
         /// <summary>
         /// Get Closet posistion of Food Object incase there are more then 1 food in the world.

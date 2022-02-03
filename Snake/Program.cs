@@ -29,8 +29,7 @@ class Program
         world.Create_Food();
         world.Create_Food();
 
-        TheGreatAI aISnake = new TheGreatAI(world, new Position { x= WorldWidth-4, y = WorldHeight-4});   
-        world.gameObjects.Add(aISnake); 
+     
 
 
 
@@ -82,7 +81,6 @@ class Program
 
             renderer.Render_Blank();//Remove old frame/positions
 
-            aISnake.SmarterAI(); // Ai Makes a move :)
 
             //Create new positons/frames
             world.Update();

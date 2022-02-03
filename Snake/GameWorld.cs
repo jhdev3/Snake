@@ -35,11 +35,7 @@
 
                             if (fobj.position.IsEqual(obj.position))
                             {
-                                if (obj is AISnake)
-                                    AIpoints++;
-                                else
-                                    Points++;
-
+                            
                                 gameObjects.Remove(fobj);
                                 Create_Food();
                                 break;
