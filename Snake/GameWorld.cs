@@ -66,8 +66,10 @@
 
 
         }
-        //The earth is not flat :)
+        
         /// <summary>
+        /// The World is not flat ;)  
+        /// https://en.wikipedia.org/wiki/Eratosthenes
         ///   Creates a new position if the player goes outside of the GamingWorld
         /// </summary>
         /// <param name="pos"> Snake posistion</param>

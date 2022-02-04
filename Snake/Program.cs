@@ -41,18 +41,6 @@ class Program
         world.gameObjects.Add(AIsnake); 
         
 
-
-
-
-
-
-        // world.gameObjects.Add(new Food(new Position { x = 5, y = 10}));
-
-
-
-
-        // ...
-
         // Huvudloopen
         bool running = true;
         while (running)
