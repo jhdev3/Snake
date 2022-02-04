@@ -37,7 +37,7 @@
                             if (fobj.position.IsEqual(obj.position))
                             {
                                 Player player = (Player)obj;
-                                gameObjects.Add(new PlayerBody(player.Points, player));
+                                gameObjects.Add(new PlayerBodyPart(player.Points, player));
                                 player.Points++;
 
                                 if (obj is TheGreatAI)
@@ -50,7 +50,7 @@
                                 break;
                             }
                         }
-                        if (fobj is PlayerBody)
+                        if (fobj is PlayerBodyPart)
                         {
                             if (fobj.position.IsEqual(obj.position))
                             {

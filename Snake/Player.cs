@@ -13,7 +13,7 @@ namespace Snake
 
         public Direction playerDirection;
         public LinkedList<Position> Positions = new LinkedList<Position>();
-        public int Points = 0; //The points to calculate how big the body is
+        public int Points = 0; //Points in The game and body count
 
         //Needs a Start postion
         public Player ()
