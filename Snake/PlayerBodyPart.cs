@@ -8,6 +8,9 @@ namespace Snake
 {
     internal class PlayerBodyPart : GameObject
     {
+        /// <summary>
+        /// Posistion Sets next time the BodyPart updates.
+        /// </summary>
         public int PosInPlayerList;
         public Player Player; 
         public PlayerBodyPart(int step, Player player)
@@ -16,6 +19,7 @@ namespace Snake
             Player = player;
             Appearance = '#';
             color = player.color;
+            player.bodyParts++;
         }
 
 
