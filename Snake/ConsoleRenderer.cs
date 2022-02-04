@@ -30,6 +30,7 @@
                 Console.Write(obj.Appearance);
 
             }
+
             Console.ResetColor();
             Console.SetCursorPosition(0, world.Height);
             Console.Write($"Points {world.Points}");

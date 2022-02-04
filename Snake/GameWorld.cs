@@ -9,32 +9,37 @@
 
         public int Points = 0;
         public int AIpoints = 0;
-        
-        public GameWorld (int width, int height)
+
+        public GameWorld(int width, int height)
         {
-            Width = width; 
-            Height = height;   
+            Width = width;
+            Height = height;
         }
 
         public void Update()
         {
             // TODO
+
             foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 
             {
                 obj.Update();
 
                 if (obj is Player)
                 {
+
                     //Player going to Hell ?
                     obj.position = Player_Inside_the_World(obj.position);
 
                     foreach (GameObject fobj in gameObjects)
                     {
-                        if(fobj is Food)
+                        if (fobj is Food)
                         {
-
                             if (fobj.position.IsEqual(obj.position))
                             {
+                                Player player = (Player)obj;
+                                gameObjects.Add(new PlayerBody(player.Points, player));
+                                player.Points++;
+
                                 if (obj is TheGreatAI)
                                     AIpoints++;
                                 else
@@ -45,9 +50,21 @@
                                 break;
                             }
                         }
+                        if (fobj is PlayerBody)
+                        {
+                            if (fobj.position.IsEqual(obj.position))
+                            {
+                                //The player obj should lose the game here
+                            }
+                        }
                     }
                 }
+
+
+
             }
+
+
         }
         //The earth is not flat :)
         /// <summary>
@@ -65,7 +82,7 @@
 
             else if (pos.y < 0)
             {
-                pos.y = Height-1;
+                pos.y = Height - 1;
             }
             //Width
             else if (pos.x >= Width)
@@ -75,7 +92,7 @@
 
             else if (pos.x < 0)
             {
-                pos.x = Width-1;
+                pos.x = Width - 1;
             }
 
             return pos;
@@ -88,9 +105,9 @@
         public void Create_Food()
         {
             var Random = new Random();
-            Position foodPosistion = new Position { x = Random.Next(this.Width), y = Random.Next(this.Height)};
+            Position foodPosistion = new Position { x = Random.Next(this.Width), y = Random.Next(this.Height) };
             gameObjects.Add(new Food(foodPosistion));
         }
     }
 }
-       
+

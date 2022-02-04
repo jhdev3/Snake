@@ -15,6 +15,7 @@ class Program
 
     static void Loop()
     {
+        Console.CursorVisible = false;
         // Initialisera spelet
         const int frameRate = 5;
         GameWorld world = new GameWorld(WorldWidth, WorldHeight);
