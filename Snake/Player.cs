@@ -20,6 +20,7 @@ namespace Snake
             this.playerDirection = Direction.Down;
             position = start;
             Appearance = '☻';
+            color = ConsoleColor.Blue;
         }
         public Player(Position start)
         {
@@ -27,6 +28,7 @@ namespace Snake
             this.playerDirection = Direction.Down;
             position = start;
             Appearance = '☻';
+            color = ConsoleColor.Blue;
         }
 
         public override void Update()

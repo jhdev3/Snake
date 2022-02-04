@@ -31,8 +31,9 @@ class Program
 
         Player worm2 = new Player();
         world.gameObjects.Add(worm2);
-        worm2.Appearance = '#';
+        worm2.Appearance = '☺';
         worm2.position = new Position { x = 10, y = 10 };
+        worm2.color = ConsoleColor.Green;
 
 
         TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = WorldWidth-4, y = WorldHeight-4});
