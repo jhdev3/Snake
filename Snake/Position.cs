@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Snake
 {
     internal class Position
-    {//TEST
+    {
         public int x, y;
 
         public bool IsEqual(Position compare)
@@ -19,11 +19,6 @@ namespace Snake
             else
                 return false;
         }
-        public override string ToString()
-        {
-            return "X: " + x + " " + "Y: " + y;
-        }
-
         public Position Clone()
         {
             Position result = new Position();
