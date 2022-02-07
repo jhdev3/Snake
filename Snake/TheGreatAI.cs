@@ -21,13 +21,16 @@ namespace Snake
     {
         private GameWorld _AIWorld;
         //private Direction _AIDirection;
-        public TheGreatAI(GameWorld world, Position start, char look = 'A')
+        public TheGreatAI(GameWorld world, Position start, Points AI, char look = 'A', ConsoleColor c =ConsoleColor.DarkRed) : base(start, AI, look,c)
         {
-            position = start;
-            Appearance = look;
             _AIWorld = world;
-            this.playerDirection = Direction.Up;
         }
+        public TheGreatAI(GameWorld world, Position start) : base(start)
+        {
+            _AIWorld = world;
+
+        }
+
 
         /// <summary>
         /// Used to change the direction of the Aisnake 

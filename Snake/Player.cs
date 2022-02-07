@@ -13,34 +13,50 @@ namespace Snake
 
         public Direction playerDirection;
         public LinkedList<Position> Positions = new LinkedList<Position>();
-        public int Points = 0; //Points in The game and body count
+        public Points points; //Points in The game and body count
+        public int bodyParts = 0;
 
         //Needs a Start postion
         public Player ()
         {
+            points = new Points();  
             Position start = new Position { x = 3, y = 3};
-
             this.playerDirection = Direction.Down;
             position = start;
             Appearance = '☻';
-            color = ConsoleColor.Blue;
+            color = ConsoleColor.DarkRed;
+            Positions.AddFirst(start);
         }
         public Player(Position start)
         {
-
+            points = new Points();
             this.playerDirection = Direction.Down;
             position = start;
             Appearance = '☻';
-            color = ConsoleColor.Blue;
+            color = ConsoleColor.DarkRed;
+            Positions.AddFirst(start);
+
+        }
+        public Player(Position start, Points p, char look = '☻', ConsoleColor c = ConsoleColor.Green)
+        {
+            points = p;
+            this.playerDirection = Direction.Down;
+            position = start;
+            Appearance = look;
+            color = c;
+            Positions.AddFirst(start);
         }
 
         public override void Update()
         {
             Positions.AddFirst(this.position.Clone());
-            for (int i = Positions.Count - 1; i > Points; i--)//Vad gör For loopen ? 
-            {
+            //for (int i = Positions.Count - 1; i > points.points; i--)//Vad gör For loopen ? 
+            //{
+            //    Console.WriteLine(i);
+            //    Positions.RemoveLast();
+            //}
+            if((Positions.Count - 1) > bodyParts)
                 Positions.RemoveLast();
-            }
 
             switch (this.playerDirection)
             {
@@ -56,11 +72,10 @@ namespace Snake
                 case Direction.Right:
                     position.x += 1;
                     break;
-                default:
-                    position.x += 0;
-                    position.y += 0;
-                    break;                 
+                           
             }
+            
+
         }
     }
 }
