@@ -11,8 +11,10 @@ Detta spel har 2 modes:
 
 1) klassiskt snake med växande kropp och spelet avslutas när man krockar med sig 	själv. 
 
-2) Spela 2 players mot 2 AIs. Utan kropp och utan kollision. Att vi inte har inte har	kollision beror på att AI:n då behöver uppdateras samt att vi bör fixa issue 180 graders svängar. 
-Att vi inte har kropp på de 4 ormarna beror på att spelet renderas dåligt och ger en dålig spelupplevelse.  
+2) Spela 2 players mot 2 AIs. Utan kollision. Att vi inte har inte har	kollision beror på att AI:n då behöver uppdateras samt att vi bör fixa issue 180 graders svängar. 
+
+
+Går att välja om man vill ta bort kroppen om man tycker att kropp på de 4 ormarna gör att spelet renderas dåligt och eller skapar en dålig spelupplevelse.  
 
 
 P.S för att spela 1 v 1Ai så är det i princip bara att av kommentera 2 rader kod ;) 
