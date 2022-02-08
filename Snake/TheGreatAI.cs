@@ -21,7 +21,7 @@ namespace Snake
     {
         private GameWorld _AIWorld;
         //private Direction _AIDirection;
-        public TheGreatAI(GameWorld world, Position start, Points AI, char look = 'A', ConsoleColor c =ConsoleColor.DarkRed) : base(start, AI, look,c)
+        public TheGreatAI(GameWorld world, Position start, Points AI, char look = (char) 165, ConsoleColor c =ConsoleColor.DarkRed) : base(start, AI, look,c)
         {
             _AIWorld = world;
         }
@@ -151,9 +151,5 @@ namespace Snake
                 return distance;
             }
         }
-
-
     }
-
-    
 }

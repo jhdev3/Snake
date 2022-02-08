@@ -74,6 +74,7 @@ namespace UnitTestSnake
             PlayerBodyPart Test3 = new PlayerBodyPart(p.Positions.Count()-1, p);
             world.gameObjects.Add(Test3);
             p.points.AddPoints();
+
             int resultat = 0;
             foreach(var part in world.gameObjects)
             {
@@ -85,7 +86,7 @@ namespace UnitTestSnake
             Assert.Equal(3, resultat);
             Assert.Equal(5, Test.position.y);
             Assert.Equal(4, Test2.position.y);
-            Assert.Equal(0, Test3.position.y);//Känns Konstigt :)
+            Assert.Equal(3, Test3.position.y);
 
         }
     }
