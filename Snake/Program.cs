@@ -43,6 +43,7 @@ class Program
         AISnake AIsnake2 = new AISnake(world, new Position { x = 3, y = world.Height-4 }, AIpoints);
         bool Collision = true;
         bool body = true;
+        //Tip Uncomment some rows if u want less players/AIs ;)
         if (AI) { 
             renderer.AddToPointsList(AIpoints);
             world.gameObjects.Add(AIsnake);
@@ -127,7 +128,7 @@ class Program
 
         //Render som output after game is over.
         if (AI) { 
-            if (p1p2points.points >= 15)
+            if (p1p2points.points >= 50)
             {
                 Console.WriteLine("GAME OVER: You won!!!");
             }
