@@ -48,8 +48,8 @@
                 {
 
                     PlayerBodyPart part = (PlayerBodyPart)obj;
-                    //Dont need to remove Every BodyPart :)
-                    if (part.PosInPlayerList+1 ==  part.Player.bodyParts)//
+                    //Dont need to remove Every BodyPart only the last one  :)
+                    if (part.PosInPlayerList+1 ==  part.Player.bodyParts)
                     {
                         Console.SetCursorPosition(obj.position.x, obj.position.y);
                         Console.Write(" ");
