@@ -7,7 +7,7 @@ class Program
     /// </summary>
     static ConsoleKey ReadKeyIfExists() => Console.KeyAvailable ? Console.ReadKey(intercept: true).Key : ConsoleKey.NoName;
     /// <summary>
-    /// To Set the GameWorlds Width and Height, used for easy testing
+    /// To Set the GameWorlds Width and Height, used for easy UItesting
     /// </summary>
     public const int WorldWidth = 50;
     public const int WorldHeight = 20;
@@ -30,7 +30,6 @@ class Program
         Points p1p2points = new Points(0, name, new Position { x = 0, y = world.Height });
         renderer.AddToPointsList(p1p2points);
 
-
         Player PlayerSnake = new Player(new Position {x=3, y=3 },p1p2points , (char) 2,ConsoleColor.Green);
         world.gameObjects.Add(PlayerSnake);
 
@@ -45,13 +44,14 @@ class Program
 
         AISnake AIsnake2 = new AISnake(world, new Position { x = 3, y = world.Height-4 }, AIpoints);
         bool Collision = true;
+        bool body = true;
         if (AI) { 
             renderer.AddToPointsList(AIpoints);
             world.gameObjects.Add(AIsnake);
             world.gameObjects.Add(AIsnake2);
             world.gameObjects.Add(PlayerSnake2);
-            Collision = false;  
-
+            Collision = false;
+            body = false; // This mode with body on the snake is a bit annoing at this point rendering 4 bodys makes the render quirky 
         }
 
 
@@ -92,19 +92,19 @@ class Program
 
             // Uppdatera världen och rendera om
 
-            renderer.Render_Blank();//Remove old frame/positions
+            renderer.Render_Blank();//Remove old frame/positions of the objects
  
-            //Create new positons/frames
-            if(running)
-                running = world.Update(Collision);
+            //Create new positons/frame
+            if(running)//Want to quit with q keyPress
+                running = world.Update(Collision, body); //Adding some rules
             
             renderer.Render();
 
             //Rules playing with AI
             if (AI)
             {
-                //If the players or the AI get 15 points the game ends. 
-                if (AIpoints.points >= 15 || p1p2points.points >= 15)
+                //If the players or the AI get 50 points the game ends. 
+                if (AIpoints.points >= 50 || p1p2points.points >= 50)
                 {
                     running = false;
 
@@ -127,7 +127,7 @@ class Program
 
         Console.SetCursorPosition(Console.WindowWidth/2 , 1);
 
-        //If the player gets 15 points, prints "You won!!!" else prints "You lost!!!"
+        //Render som output after game is over.
         if (AI) { 
             if (p1p2points.points >= 15)
             {
@@ -147,6 +147,9 @@ class Program
         }
 
         Console.WriteLine(AsciiArt.huggingSnakes);
+        Console.WriteLine("Press Enter to Quit the game");
+
+        Console.ReadLine();
 
 
 
@@ -242,7 +245,6 @@ class Program
         }
 
         
-        Console.ReadLine();
 
     }
 }

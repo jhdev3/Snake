@@ -12,11 +12,17 @@
             Width = width;
             Height = height;
         }
-
-        public bool Update(bool collision = false)//Setting Standard value to mess up with the tests
+        /// <summary>
+        /// Updates all the object in the gameworld and the Gameworld itself.
+        /// If We allow collision its GameOVer
+        /// </summary>
+        /// <param name="collision"> Rules to allow collision</param>
+        /// <param name="body"> Want Body on the snake or not</param>
+        /// <returns></returns>
+        public bool Update(bool collision = false, bool body = true)//Setting Standard value to not mess up with the tests
         {
 
-            foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 
+            foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequence" 
             {
                 obj.Update();
 
@@ -33,12 +39,14 @@
                             if (fobj.position.IsEqual(obj.position))
                             {
                                 Player player = (Player)obj; //Pass by refrence to new PlayerBodyPart.
+                                if (body) { 
                                 gameObjects.Add(new PlayerBodyPart(player.Positions.Count()-1, player));
-                                player.points.AddPoints();
+                                }
 
-                                gameObjects.Remove(fobj);
-                                Create_Food();
-                                break;
+                                player.points.AddPoints();
+                                gameObjects.Remove(fobj);//Remove Food
+                                Create_Food();//Add Food
+                                break;//Dont need to loop food more the player cant be on 2 pos at once. and 2nd forloop dont need to be ToList() either. 
                             }
                         }
                         if (fobj is PlayerBodyPart)

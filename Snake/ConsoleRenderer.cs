@@ -23,10 +23,11 @@
             foreach( GameObject obj in world.gameObjects)
             {
               
+             
                 Console.SetCursorPosition(obj.position.x, obj.position.y);
                 Console.ForegroundColor = obj.color;                
                 Console.Write(obj.Appearance);
-          
+                
             }
 
             Console.ResetColor();
@@ -42,8 +43,24 @@
         {
             foreach (GameObject obj in world.gameObjects)
             {
-                Console.SetCursorPosition(obj.position.x, obj.position.y);
-                Console.Write(" ");
+
+                if (obj is PlayerBodyPart)
+                {
+
+                    PlayerBodyPart part = (PlayerBodyPart)obj;
+                    //Dont need to remove Every BodyPart :)
+                    if (part.PosInPlayerList+1 ==  part.Player.bodyParts)//
+                    {
+                        Console.SetCursorPosition(obj.position.x, obj.position.y);
+                        Console.Write(" ");
+                    }
+
+                }
+                else
+                {
+                    Console.SetCursorPosition(obj.position.x, obj.position.y);
+                    Console.Write(" ");
+                }
             }
         }
 
