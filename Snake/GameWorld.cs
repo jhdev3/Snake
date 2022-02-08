@@ -33,7 +33,7 @@
                         {
                             if (fobj.position.IsEqual(obj.position))
                             {
-                                Player player = (Player)obj;
+                                Player player = (Player)obj; //Pass by refrence to new PlayerBodyPart.
                                 gameObjects.Add(new PlayerBodyPart(player.Positions.Count()-1, player));
                                 player.points.AddPoints();
 

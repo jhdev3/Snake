@@ -55,7 +55,7 @@ class Program
 
            
             // Making the Game more responsive. 
-            //Notice more when u play with 2 players.
+            //If key = prev key then read a new key to "Clear" the inputstream buffer"
             ConsoleKey key = ReadKeyIfExists();
             while (key != ConsoleKey.NoName && key == prevKey)
             {
@@ -64,6 +64,7 @@ class Program
             prevKey = key;
 
             running = Player1Move(PlayerSnake, key);
+            
 
            Player2Move(PlayerSnake2, key);
 

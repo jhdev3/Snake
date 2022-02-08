@@ -16,7 +16,7 @@ namespace Snake
         public Points points; //Points in The game and body count
         public int bodyParts = 0;
 
-        //Needs a Start postion
+        //Standard mostly used in tests 
         public Player ()
         {
             points = new Points();  
@@ -50,11 +50,8 @@ namespace Snake
         public override void Update()
         {
             Positions.AddFirst(this.position.Clone());
-            //for (int i = Positions.Count - 1; i > points.points; i--)//Vad gör For loopen ? 
-            //{
-            //    Console.WriteLine(i);
-            //    Positions.RemoveLast();
-            //}
+
+            //Dokumentera -- Ge förklraring.
             if((Positions.Count - 1) > bodyParts)
                 Positions.RemoveLast();
 
