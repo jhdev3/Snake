@@ -15,6 +15,8 @@ Detta spel har 2 modes:
 Att vi inte har kropp på de 4 ormarna beror på att spelet renderas dåligt och ger en dålig spelupplevelse.  
 
 
-P.S för att spela 1v1 så är det i princip bara att av kommentera 2 rader kod ;) 
+P.S för att spela 1 v 1Ai så är det i princip bara att av kommentera 2 rader kod ;) 
+
+Vill man spela 1v1 krävs det ett par till ändringar men inte så svårt att lista ut vad som krävs ;)  
 
 Vi kan även göra AI:n mer dum genom att slumpa vissa moves ;) 
