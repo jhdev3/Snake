@@ -19,7 +19,6 @@ namespace UnitTestSnake
             Assert.NotNull(f);
            // Assert.Equal("F", f.Appearance);
             Assert.Equal(5, f.position.x);
-            Assert.Equal('@', f.Appearance);
 
             Assert.Equal(10, f.position.y);
 
