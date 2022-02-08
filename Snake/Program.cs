@@ -12,7 +12,13 @@ class Program
     public const int WorldWidth = 50;
     public const int WorldHeight = 20;
 
-
+    /// <summary>
+    /// Using one Loop and The inparmeters decides the GameMode
+    /// Playing with AI = No Collision
+    /// Playing Classic = Collision 
+    /// </summary>
+    /// <param name="AI"> Want AI or not</param>
+    /// <param name="name"> Name of the player or Team</param>
     static void Loop(bool AI = true, string name = "Team Goat")
     {
         // Initialisera spelet

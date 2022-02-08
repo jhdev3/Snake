@@ -20,6 +20,7 @@ namespace Snake
             Appearance = '#';
             color = player.color;
             player.bodyParts++;
+            Update(); //Setting the position :)
         }
 
 
