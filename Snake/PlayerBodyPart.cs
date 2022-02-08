@@ -9,7 +9,7 @@ namespace Snake
     internal class PlayerBodyPart : GameObject
     {
         /// <summary>
-        /// Posistion Sets next time the BodyPart updates.
+        /// Posistion sets on bodypart according to were it is positioned in players linkedlist 
         /// </summary>
         public int PosInPlayerList;
         public Player Player; 
