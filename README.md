@@ -13,3 +13,6 @@ Detta spel har 2 modes:
 
 2) Spela 2 players mot 2 AIs. Utan kropp och utan kollision. Att vi inte har inte har	kollision beror på att AI:n då behöver uppdateras samt att vi bör fixa issue 180 graders svängar. 
 Att vi inte har kropp på de 4 ormarna beror på att spelet renderas dåligt och ger en dålig spelupplevelse.  
+
+
+Vi kan även göra AI:n mer dum genom att slumpa vissa moves ;) 
