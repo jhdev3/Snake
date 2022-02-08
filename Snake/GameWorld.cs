@@ -7,9 +7,6 @@
 
         public List<GameObject> gameObjects = new List<GameObject>();
 
-        public int Points = 0;
-        public int AIpoints = 0;
-
         public GameWorld(int width, int height)
         {
             Width = width;
@@ -28,7 +25,7 @@
                 {
 
                     //Player going to Hell ?
-                    obj.position = Player_Inside_the_World(obj.position);
+                   Player_Inside_the_World(obj.position);
 
                     foreach (GameObject fobj in gameObjects)
                     {
@@ -37,13 +34,8 @@
                             if (fobj.position.IsEqual(obj.position))
                             {
                                 Player player = (Player)obj;
-                                gameObjects.Add(new PlayerBodyPart(player.Points, player));
-                                player.Points++;
-
-                                if (obj is TheGreatAI)
-                                    AIpoints++;
-                                else
-                                    Points++;
+                                gameObjects.Add(new PlayerBodyPart(player.Positions.Count()-1, player));
+                                player.points.AddPoints();
 
                                 gameObjects.Remove(fobj);
                                 Create_Food();
@@ -74,7 +66,7 @@
         /// </summary>
         /// <param name="pos"> Snake posistion</param>
         /// <returns>new or same posistion</returns>
-        private Position Player_Inside_the_World(Position pos)
+        private void Player_Inside_the_World(Position pos)
         {
             //Height
             if (pos.y >= Height)
@@ -96,9 +88,6 @@
             {
                 pos.x = Width - 1;
             }
-
-            return pos;
-
         }
 
         /// <summary>

@@ -21,21 +21,27 @@ class Program
         GameWorld world = new GameWorld(WorldWidth, WorldHeight);
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
+        Points p1p2points = new Points(0, "TeamGoat", new Position { x = 0, y = world.Height });
+
+        Player PlayerSnake = new Player(new Position {x=3, y=3 },p1p2points , '☺', ConsoleColor.Green);
+        world.gameObjects.Add(PlayerSnake);
+
+       Player PlayerSnake2 = new Player(new Position { x=world.Width-4, y=3 }, p1p2points, '☺', ConsoleColor.Blue);
+        world.gameObjects.Add(PlayerSnake2);
 
 
-        Player worm = new Player();
-        world.gameObjects.Add(worm);
+        renderer.AddToPointsList(p1p2points);   
+        Points AIpoints = new Points(0, "TheAmazingAI", new Position { x = WorldWidth-20, y = world.Height });
+        renderer.AddToPointsList(AIpoints);
+
+        TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = world.Width-4, y = world.Height-4 }, AIpoints);
+        world.gameObjects.Add(AIsnake); 
 
         world.Create_Food();
         world.Create_Food();
         world.Create_Food();
 
-        Player worm2 = new Player();
-        world.gameObjects.Add(worm2);
-        worm2.Appearance = '☺';
-        worm2.position = new Position { x = 10, y = 10 };
-        worm2.color = ConsoleColor.Green;
-
+        
 
         TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = WorldWidth-4, y = WorldHeight-4});
         world.gameObjects.Add(AIsnake);
@@ -59,9 +65,9 @@ class Program
             }
             prevKey = key;
 
-            running = Player1Move(worm, key);
+            running = Player1Move(PlayerSnake, key);
 
-           Player2Move(worm2, key);
+           Player2Move(PlayerSnake2, key);
 
 
             // Uppdatera världen och rendera om
