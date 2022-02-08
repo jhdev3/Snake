@@ -34,7 +34,6 @@
             foreach ( var p in playerPoints)
             {
                 Console.SetCursorPosition(p.pos.x, p.pos.y);
-
                 Console.Write(p);
 
             }

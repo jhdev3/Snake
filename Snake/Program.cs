@@ -50,8 +50,7 @@ class Program
             world.gameObjects.Add(AIsnake2);
             world.gameObjects.Add(PlayerSnake2);
             Collision = false;
-            body = false; // This mode with body on the snake is a bit annoing at this point rendering 4 bodys makes the render quirky 
-        }
+            body = true; // If u want to not play with body change this :)
 
 
 
