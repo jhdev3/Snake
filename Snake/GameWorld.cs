@@ -13,7 +13,7 @@
             Height = height;
         }
 
-        public bool Update(bool collision)
+        public bool Update(bool collision = false)//Setting Standard value to mess up with the tests
         {
 
             foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 

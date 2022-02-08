@@ -86,7 +86,7 @@ namespace UnitTestSnake
             Assert.Equal(3, resultat);
             Assert.Equal(5, Test.position.y);
             Assert.Equal(4, Test2.position.y);
-            Assert.Equal(0, Test3.position.y);
+            Assert.Equal(3, Test3.position.y);
 
         }
     }

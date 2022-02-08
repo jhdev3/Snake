@@ -51,7 +51,7 @@ namespace Snake
         {
             Positions.AddFirst(this.position.Clone());
 
-            //Dokumentera -- Ge förklraring.
+            //If the player has not gotten any point, we remove the last Position from the list to avoid a memory leak.
             if((Positions.Count - 1) > bodyParts)
                 Positions.RemoveLast();
 

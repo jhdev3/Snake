@@ -19,8 +19,9 @@ class Program
     /// </summary>
     /// <param name="AI"> Want AI or not</param>
     /// <param name="name"> Name of the player or Team</param>
-    static void Loop(bool AI = true, string name = "Team Goat")
+    static void Loop(bool AI = false, string name = "Snake")
     {
+        Console.Clear();
         // Initialisera spelet
         const int frameRate = 5;
         GameWorld world = new GameWorld(WorldWidth, WorldHeight);
@@ -99,15 +100,18 @@ class Program
             
             renderer.Render();
 
-            /*
-            //Todo Jämför Poäng med AI först till antal poäng vinner :) 
-            if(AIsnake >= 15 || playerpoints >= 15)
+            //Rules playing with AI
+            if (AI)
             {
-                Console.WriteLine();
-                running = false;
+                //If the players or the AI get 15 points the game ends. 
+                if (AIpoints.points >= 15 || p1p2points.points >= 15)
+                {
+                    running = false;
 
+                }
             }
-            */
+           
+            
             // Mät hur lång tid det tog
             double frameTime = Math.Ceiling(1000.0 / frameRate - (DateTime.Now - before).TotalMilliseconds);
             if (frameTime > 0)
@@ -123,9 +127,24 @@ class Program
 
         Console.SetCursorPosition(Console.WindowWidth/2 , 1);
 
-        Console.WriteLine("GAME OVER");
-        Console.SetCursorPosition(Console.WindowWidth/2, 2);
-        Console.Write(PlayerSnake.points);
+        //If the player gets 15 points, prints "You won!!!" else prints "You lost!!!"
+        if (AI) { 
+            if (p1p2points.points >= 15)
+            {
+                Console.WriteLine("GAME OVER: You won!!!");
+            }
+            else
+            {
+                Console.WriteLine("GAME OVER You lost!!!");
+            }
+        }
+        else {
+            Console.WriteLine("GAME OVER");
+
+            Console.SetCursorPosition(Console.WindowWidth/2, 2);
+            Console.Write(PlayerSnake.points);
+
+        }
 
         Console.WriteLine(AsciiArt.huggingSnakes);
 
@@ -200,26 +219,29 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.SetCursorPosition((Console.WindowWidth - 20) / 2, Console.CursorTop);
-        //  Console.SetCursorPosition(30, 6);
-        Console.WriteLine(Console.WindowWidth);
-        Console.SetCursorPosition((Console.WindowWidth - 20) / 2, Console.CursorTop/2);
-
-        Console.Write($"{AsciiArt.snakeWord}");
+        Console.Write(AsciiArt.snakeWord);
         Console.WriteLine(AsciiArt.snakeHead);
-        Console.WriteLine(AsciiArt.huggingSnakes);
+        Console.SetCursorPosition((Console.WindowWidth - 20) / 2, 8);
+        Console.WriteLine("Choose game mode: ");
+        Console.SetCursorPosition((Console.WindowWidth - 20) / 2, 10);
+        Console.WriteLine(" 1 Classic Snake");
+        Console.SetCursorPosition((Console.WindowWidth - 20) / 2, 12);
+        Console.WriteLine(" 2 Compete vs AI collision of");
+        Console.SetCursorPosition((Console.WindowWidth +14) / 2, 8);
 
-        Console.SetCursorPosition((Console.WindowWidth - 20) / 2, Console.CursorTop / 2);
-        Console.Write("Options: ");
+        string choice = Console.ReadLine(); 
 
+        switch(choice)
+        {
+            case "2":
+                Loop(true, "Team Goat");
+                break;
+            default:
+                Loop();
+                break;
+        }
 
-
-        Console.ReadLine();
-        Console.Clear();
-
-        // Vi kan ev. ha någon meny här, men annars börjar vi bara spelet direkt
-        Loop();
-
+        
         Console.ReadLine();
 
     }
