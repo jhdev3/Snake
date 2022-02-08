@@ -43,8 +43,7 @@ class Program
 
         
 
-        TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = WorldWidth-4, y = WorldHeight-4});
-        world.gameObjects.Add(AIsnake);
+
 
         ConsoleKey prevKey = ConsoleKey.NoName;
 
