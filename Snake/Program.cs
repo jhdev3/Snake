@@ -43,8 +43,10 @@ class Program
 
         
 
-      
-        
+        TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = WorldWidth-4, y = WorldHeight-4});
+        world.gameObjects.Add(AIsnake);
+
+        ConsoleKey prevKey = ConsoleKey.NoName;
 
         // Huvudloopen
         bool running = true;
@@ -53,9 +55,15 @@ class Program
             // Kom ihåg vad klockan var i början
             DateTime before = DateTime.Now;
 
-            // Hantera knapptryckningar från användaren
-
+           
+            // Making the Game more responsive. 
+            //Notice more when u play with 2 players.
             ConsoleKey key = ReadKeyIfExists();
+            while (key != ConsoleKey.NoName && key == prevKey)
+            {
+                key = ReadKeyIfExists();
+            }
+            prevKey = key;
 
             running = Player1Move(PlayerSnake, key);
 
