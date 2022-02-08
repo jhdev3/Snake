@@ -13,9 +13,8 @@
             Height = height;
         }
 
-        public void Update()
+        public bool Update(bool collision)
         {
-            // TODO
 
             foreach (GameObject obj in gameObjects.ToList()) //returns list of elements för "Sequencen" 
             {
@@ -44,19 +43,17 @@
                         }
                         if (fobj is PlayerBodyPart)
                         {
-                            if (fobj.position.IsEqual(obj.position))
+                            if (fobj.position.IsEqual(obj.position) && collision == true)
                             {
-                                //The player obj should lose the game here
+                                return false;//The player obj should lose the game here
                             }
                         }
                     }
                 }
 
-
-
             }
 
-
+            return true;    
         }
         
         /// <summary>

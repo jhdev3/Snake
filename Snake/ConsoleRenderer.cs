@@ -6,24 +6,19 @@
         private List<Points> playerPoints;
         public ConsoleRenderer(GameWorld gameWorld)
         {
-            // TODO Konfigurera Console-fönstret enligt världens storlek
 
 #pragma warning disable CA1416 // Validate platform compatibility
-           Console.SetWindowSize(gameWorld.Width, gameWorld.Height + 1);  // Fungerar Bara på Windows gissar att det är rätt xD
+            //Height + 1 to add room for the points Field. 
+           Console.SetWindowSize(gameWorld.Width, gameWorld.Height + 1);  // SetWindowSize only works on Windows
 #pragma warning restore CA1416 // Validate platform compatibility
+           
             Console.CursorVisible = false;
             playerPoints = new List<Points>();
 
             world = gameWorld;
         }
-
         public void Render()
         {
-
-            // TODO Rendera spelvärlden (och poängräkningen)
-            
-
-            // Använd
 
             foreach( GameObject obj in world.gameObjects)
             {
@@ -38,8 +33,10 @@
             foreach ( var p in playerPoints)
             {
                 Console.SetCursorPosition(p.pos.x, p.pos.y);
+
                 Console.Write(p);
-            }   
+
+            }
         }
         public void Render_Blank()
         {

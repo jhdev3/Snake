@@ -20,14 +20,15 @@ namespace Snake
     {
         private GameWorld _AIWorld;
         //private Direction _AIDirection;
-        public AISnake(GameWorld world, Position start, char look = 'A')
+        public AISnake(GameWorld world, Position start, Points AI, char look = (char)165, ConsoleColor c = ConsoleColor.DarkYellow) : base(start, AI, look, c)
         {
-             position = start;
-             Appearance = look;
             _AIWorld = world;
-            this.playerDirection = Direction.Up;
         }
-        
+        public AISnake(GameWorld world, Position start) : base(start)
+        {
+            _AIWorld = world;
+
+        }
         /// <summary>
         /// AI Choose a posistion based of Food posistion. Goal should be choose closest Direction
         /// AI Dont know the world is round easy mode :)
