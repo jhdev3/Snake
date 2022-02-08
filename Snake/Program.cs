@@ -27,21 +27,19 @@ class Program
         GameWorld world = new GameWorld(WorldWidth, WorldHeight);
         ConsoleRenderer renderer = new ConsoleRenderer(world);
 
+        //Player 1 things they need:)
         Points p1p2points = new Points(0, name, new Position { x = 0, y = world.Height });
         renderer.AddToPointsList(p1p2points);
-
         Player PlayerSnake = new Player(new Position {x=3, y=3 },p1p2points , (char) 2,ConsoleColor.Green);
         world.gameObjects.Add(PlayerSnake);
 
 
 
-       Player PlayerSnake2 = new Player(new Position { x=world.Width-4, y=3 }, p1p2points, (char)2, ConsoleColor.Blue);
-
-
+        //Creates the objects needed for GameMode2 Adding them if its true. 
+        //Could use 2 diffrent Game Loops for prittier code ;)
+        Player PlayerSnake2 = new Player(new Position { x=world.Width-4, y=3 }, p1p2points, (char)2, ConsoleColor.Blue);
         Points AIpoints = new Points(0, "TheAmazingAIs", new Position { x = WorldWidth-20, y = world.Height });
-
         TheGreatAI AIsnake = new TheGreatAI(world, new Position { x = world.Width-4, y = world.Height-4 }, AIpoints);
-
         AISnake AIsnake2 = new AISnake(world, new Position { x = 3, y = world.Height-4 }, AIpoints);
         bool Collision = true;
         bool body = true;
